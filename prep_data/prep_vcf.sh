@@ -1,7 +1,7 @@
 #!/bin/bash
 ​
 INFOLDER=/bigdata/smathieson/pg-gan/1000g/ALL/
-OUTFOLDER=/bigdata/smathieson/pg-gan/1000g/VCF_Tung/
+OUTFOLDER=/bigdata/smathieson/pg-gan/1000g/HDF5/
 SUFFIX=.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes2.vcf.gz
 ​
 # for each set of population(s)
@@ -16,6 +16,6 @@ do
   #done
 
   # then merge into one vcf
-  echo "bcftools concat -f ${POP}_filelist.txt -Oz -o ${POP}${SUFFIX}"
-  bcftools concat -f ${POP}_filelist.txt -Oz -o ${POP}${SUFFIX}
+  echo "bcftools concat -f ${POP}_filelist.txt -Oz -o ${OUTFOLDER}${POP}${SUFFIX}"
+  bcftools concat -f ${POP}_filelist.txt -Oz -o ${OUTFOLDER}${POP}${SUFFIX}
 done
