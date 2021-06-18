@@ -309,10 +309,11 @@ class PG_GAN:
         # now start!
         self.generator.update_params(s_best)
         return s_best''' 
-        sample_region = iterator.real_batch(1, True)
+        sample_region = self.iterator.real_batch(1, True)
         input_shape= sample_region.shape[1:]
         print(input_shape)
-        VAE_model = VAE_train(iterator, CVAE(2, input_shape))
+        VAE_model = VAE_train(self.iterator, CVAE(2, input_shape))
+        print("pretraining starts")
         VAE_model.run_training()
         trained_encoder_weights = VAE_model.model.encoder.get_weights()
         for i, weights in enumerate(trained_encoder_weights[0:7]):
