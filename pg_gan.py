@@ -12,7 +12,7 @@ import random
 import sys
 import tensorflow as tf
 from scipy.optimize import basinhopping
-
+from VAE_train import VAE_train 
 # our imports
 import discriminators
 import real_data_random
@@ -20,7 +20,7 @@ import simulation
 import util
 
 from real_data_random import Region
-
+from VAE import *
 # globals for simulated annealing
 NUM_ITER = 300
 BATCH_SIZE = 50
@@ -290,7 +290,7 @@ class PG_GAN:
 
     def disc_pretraining(self, num_batches, batch_size):
         """Pre-train so discriminator has a chance to learn before generator"""
-        s_best = []
+        '''s_best = []
         max_acc = 0
         k = 0
 
@@ -308,8 +308,19 @@ class PG_GAN:
 
         # now start!
         self.generator.update_params(s_best)
-        return s_best
-
+        return s_best''' 
+        sample_region = iterator.real_batch(1, True)
+        input_shape= sample_region.shape[1:]
+        print(input_shape)
+        VAE_model = VAE_train(iterator, CVAE(2, input_shape))
+        VAE_model.run_training()
+        trained_encoder_weights = VAE_model.model.encoder.get_weights()
+        for i, weights in enumerate(trained_encoder_weights[0:7]):
+            self.discriminator.layers[i].set_weights(weights)
+        print("finish pretraining with VAE. The discriminator layers should now be updated.")
+        s_trial = [param.start() for param in self.parameters]
+        self.generator.update_params(s_trial)
+        return s_trial
     def train_sa(self, num_batches, batch_size):
         """Train using fake_values for the simulated data"""
 
