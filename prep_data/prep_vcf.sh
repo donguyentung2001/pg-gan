@@ -2,7 +2,7 @@
 ​
 INFOLDER=/bigdata/smathieson/pg-gan/1000g/ALL/
 OUTFOLDER=/bigdata/smathieson/pg-gan/1000g/VCF_Tung/
-SUFFIX=.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes(2).vcf.gz
+SUFFIX=.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes2.vcf.gz
 ​
 # for each set of population(s)
 for POP in CHB
