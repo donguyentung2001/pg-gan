@@ -47,6 +47,10 @@ def add_to_lst(total_lst, mini_lst):
 
 def analyze_acc_lsts(real_acc_lst, fake_acc_lst):
     idx_lst = []
+    print(len(real_acc_lst))
+    print(real_acc_lst)
+    print(len(fake_acc_lst))
+    print(fake_acc_lst)
     for i in range(len(real_acc_lst)):
         b1 = 0.4 <= real_acc_lst[i] <= 0.6
         b2 = 0.4 <= fake_acc_lst[i] <= 0.6
@@ -213,6 +217,10 @@ def main():
     # set up main variables
     num_iter = len(gen_loss_lst)
     print("num iter", num_iter)
+    print(len(real_acc_lst))
+    print(len(fake_acc_lst))
+    print(real_acc_lst)
+    print(fake_acc_lst)
     stop = analyze_acc_lsts(real_acc_lst, fake_acc_lst)
     print("stop idx", stop)
     num_param = len(true_lst)
