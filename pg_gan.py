@@ -315,9 +315,12 @@ class PG_GAN:
         VAE_model = VAE_train(self.iterator, CVAE(2, input_shape))
         print("pretraining starts")
         VAE_model.run_training()
-        for i in range(7):
+        trained_encoder = VAE_model.model.encoder
+        print("The number of layers in encoder is ", len(trained_encoder.layers))
+        print("The number of layers in discriminator is ", len(self.discriminator.layers))
+        for i in range(10):
             print("layer ", i)
-            trained_encoder_weights = VAE_model.model.encoder.layers[i].get_weights()
+            trained_encoder_weights = trained_encoder.layers[i].get_weights()
             self.discriminator.layers[i].set_weights(trained_encoder_weights)
         #for i, weights in enumerate(trained_encoder_weights[0:7]):
         #    print("at layer", i)
