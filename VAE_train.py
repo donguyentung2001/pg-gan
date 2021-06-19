@@ -8,7 +8,7 @@ from VAE import decoder, encoder, CVAE, train_step
 import real_data_random
 import util 
 
-VAE_NUM_ITER = 1
+VAE_NUM_ITER = 100
 VAE_BATCH_SIZE = 50
 VAE_NUM_BATCH = 100
 print("NUM_ITER", VAE_NUM_ITER)

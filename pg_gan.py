@@ -318,13 +318,10 @@ class PG_GAN:
         trained_encoder = VAE_model.model.encoder
         print("The number of layers in encoder is ", len(trained_encoder.layers))
         print("The number of layers in discriminator is ", len(self.discriminator.layers))
-        for i in range(10):
-            print("layer ", i)
+        for i in range(7):
+            print("changing discriminator's weights in layer ", i)
             trained_encoder_weights = trained_encoder.layers[i].get_weights()
             self.discriminator.layers[i].set_weights(trained_encoder_weights)
-        #for i, weights in enumerate(trained_encoder_weights[0:7]):
-        #    print("at layer", i)
-        #    self.discriminator.layers[i].set_weights(weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated.")
         s_trial = [param.start() for param in self.parameters]
         self.generator.update_params(s_trial)
