@@ -221,7 +221,7 @@ def main():
     print(len(fake_acc_lst))
     print(real_acc_lst)
     print(fake_acc_lst)
-    stop = analyze_acc_lsts(real_acc_lst, fake_acc_lst)
+    stop = analyze_acc_lsts(real_acc_lst[1:], fake_acc_lst[1:])
     print("stop idx", stop)
     num_param = len(true_lst)
 
