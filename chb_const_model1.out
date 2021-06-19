@@ -1,0 +1,657 @@
+NUM_ITER 100
+BATCH_SIZE 50
+NUM_BATCH 100
+NUM_SNPS 36
+L 50000
+NUM_CLASSES 2
+NUM_CHANNELS 2
+NUM_ITER 300
+BATCH_SIZE 50
+NUM_BATCH 100
+NUM_SNPS 36
+L 50000
+NUM_CLASSES 2
+NUM_CHANNELS 2
+{'model': 'exp', 'params': 'N1,N2,growth,T1,T2', 'data_h5': '/bigdata/smathieson/pg-gan/1000g/HDF5/CHB.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.h5', 'bed': '/bigdata/smathieson/pg-gan/1000g/HDF5/20120824_strict_mask.bed', 'reco_folder': '/bigdata/smathieson/pg-gan/1000g/genetic_map/', 'grid': None, 'toy': None, 'seed': 1833}
+NAME	VALUE	MIN	MAX
+N1	9000	1000	30000
+NAME	VALUE	MIN	MAX
+N2	5000	1000	30000
+NAME	VALUE	MIN	MAX
+growth	0.005	0.0	0.05
+NAME	VALUE	MIN	MAX
+T1	2000	1500	5000
+NAME	VALUE	MIN	MAX
+T2	350	100	1500
+['calldata', 'variants']
+['GT'] ['CHROM', 'POS']
+raw (11703947, 99, 2)
+after haps (11703947, 198)
+Parsing HapMap recombination rates...
+parameters <class 'list'> [<util.Parameter object at 0x7f22cb3fbc90>, <util.Parameter object at 0x7f233f29c150>, <util.Parameter object at 0x7f22ca9f1810>, <util.Parameter object at 0x7f22caa17950>, <util.Parameter object at 0x7f22caa17850>]
+Model: "one_pop_model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 198, 32, 32)       352       
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 198, 12, 64)       10304     
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) multiple                  0         
+_________________________________________________________________
+flatten (Flatten)            (None, 384)               0         
+_________________________________________________________________
+dropout (Dropout)            (None, 128)               0         
+_________________________________________________________________
+dense (Dense)                (None, 128)               49280     
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               16512     
+_________________________________________________________________
+dense_2 (Dense)              (None, 1)                 129       
+=================================================================
+Total params: 76,577
+Trainable params: 76,577
+Non-trainable params: 0
+_________________________________________________________________
+(198, 36, 2)
+pretraining starts
+at iteration  1
+Epoch 20, Loss: 20806.46484375
+Epoch 40, Loss: 7765.91064453125
+Epoch 60, Loss: 1654.505859375
+Epoch 80, Loss: 1340.1378173828125
+Epoch 100, Loss: 1310.458251953125
+at iteration  2
+Epoch 20, Loss: 1143.357666015625
+Epoch 40, Loss: 1066.94873046875
+Epoch 60, Loss: 926.3994140625
+Epoch 80, Loss: 705.4215698242188
+Epoch 100, Loss: 544.8678588867188
+at iteration  3
+Epoch 20, Loss: 321.72430419921875
+Epoch 40, Loss: 306.95599365234375
+Epoch 60, Loss: 336.0085144042969
+Epoch 80, Loss: 405.03729248046875
+Epoch 100, Loss: 317.05792236328125
+at iteration  4
+Epoch 20, Loss: 301.45867919921875
+Epoch 40, Loss: 219.57736206054688
+Epoch 60, Loss: 244.26687622070312
+Epoch 80, Loss: 284.05902099609375
+Epoch 100, Loss: 301.60302734375
+at iteration  5
+Epoch 20, Loss: 344.3304443359375
+Epoch 40, Loss: 293.069580078125
+Epoch 60, Loss: 288.8116455078125
+Epoch 80, Loss: 278.7112121582031
+Epoch 100, Loss: 188.4695281982422
+at iteration  6
+Epoch 20, Loss: 256.4503479003906
+Epoch 40, Loss: 207.12994384765625
+Epoch 60, Loss: 236.63821411132812
+Epoch 80, Loss: 194.1796417236328
+Epoch 100, Loss: 190.88922119140625
+at iteration  7
+Epoch 20, Loss: 150.37631225585938
+Epoch 40, Loss: 190.4432373046875
+Epoch 60, Loss: 340.1483154296875
+Epoch 80, Loss: 182.3883514404297
+Epoch 100, Loss: 205.71937561035156
+at iteration  8
+Epoch 20, Loss: 152.7296905517578
+Epoch 40, Loss: 196.3248291015625
+Epoch 60, Loss: 126.97430419921875
+Epoch 80, Loss: 211.64910888671875
+Epoch 100, Loss: 134.6152801513672
+at iteration  9
+Epoch 20, Loss: 163.59446716308594
+Epoch 40, Loss: 122.05573272705078
+Epoch 60, Loss: 190.8647918701172
+Epoch 80, Loss: 185.01388549804688
+Epoch 100, Loss: 113.80670166015625
+at iteration  10
+Epoch 20, Loss: 136.9421844482422
+Epoch 40, Loss: 177.72764587402344
+Epoch 60, Loss: 142.83482360839844
+Epoch 80, Loss: 128.83609008789062
+Epoch 100, Loss: 133.28651428222656
+at iteration  11
+Epoch 20, Loss: 125.10420989990234
+Epoch 40, Loss: 108.45259857177734
+Epoch 60, Loss: 145.20919799804688
+Epoch 80, Loss: 127.08116149902344
+Epoch 100, Loss: 136.61038208007812
+at iteration  12
+Epoch 20, Loss: 149.6148223876953
+Epoch 40, Loss: 130.74107360839844
+Epoch 60, Loss: 104.31514739990234
+Epoch 80, Loss: 160.19976806640625
+Epoch 100, Loss: 101.99082946777344
+at iteration  13
+Epoch 20, Loss: 114.83572387695312
+Epoch 40, Loss: 137.16375732421875
+Epoch 60, Loss: 119.3911361694336
+Epoch 80, Loss: 102.9899673461914
+Epoch 100, Loss: 117.47696685791016
+at iteration  14
+Epoch 20, Loss: 92.94207763671875
+Epoch 40, Loss: 114.01982879638672
+Epoch 60, Loss: 157.36460876464844
+Epoch 80, Loss: 86.2646484375
+Epoch 100, Loss: 102.66282653808594
+at iteration  15
+Epoch 20, Loss: 108.12347412109375
+Epoch 40, Loss: 81.8211898803711
+Epoch 60, Loss: 114.89208221435547
+Epoch 80, Loss: 94.60001373291016
+Epoch 100, Loss: 73.61742401123047
+at iteration  16
+Epoch 20, Loss: 112.34290313720703
+Epoch 40, Loss: 100.29891967773438
+Epoch 60, Loss: 101.29701232910156
+Epoch 80, Loss: 106.7472915649414
+Epoch 100, Loss: 69.01296997070312
+at iteration  17
+Epoch 20, Loss: 107.50415802001953
+Epoch 40, Loss: 79.0533676147461
+Epoch 60, Loss: 96.03536224365234
+Epoch 80, Loss: 93.99103546142578
+Epoch 100, Loss: 91.1829833984375
+at iteration  18
+Epoch 20, Loss: 67.59750366210938
+Epoch 40, Loss: 72.96067810058594
+Epoch 60, Loss: 82.09825897216797
+Epoch 80, Loss: 91.30269622802734
+Epoch 100, Loss: 75.18150329589844
+at iteration  19
+Epoch 20, Loss: 66.17520141601562
+Epoch 40, Loss: 83.54667663574219
+Epoch 60, Loss: 102.43094635009766
+Epoch 80, Loss: 83.96907806396484
+Epoch 100, Loss: 88.89370727539062
+at iteration  20
+Epoch 20, Loss: 61.070926666259766
+Epoch 40, Loss: 81.5041732788086
+Epoch 60, Loss: 58.645198822021484
+Epoch 80, Loss: 94.65745544433594
+Epoch 100, Loss: 63.88304138183594
+at iteration  21
+Epoch 20, Loss: 60.862457275390625
+Epoch 40, Loss: 97.0372085571289
+Epoch 60, Loss: 73.29639434814453
+Epoch 80, Loss: 72.13086700439453
+Epoch 100, Loss: 88.25883483886719
+at iteration  22
+Epoch 20, Loss: 62.44186782836914
+Epoch 40, Loss: 97.08454132080078
+Epoch 60, Loss: 53.412662506103516
+Epoch 80, Loss: 88.18254089355469
+Epoch 100, Loss: 70.14710998535156
+at iteration  23
+Epoch 20, Loss: 77.84191131591797
+Epoch 40, Loss: 60.998470306396484
+Epoch 60, Loss: 59.322532653808594
+Epoch 80, Loss: 88.39356994628906
+Epoch 100, Loss: 84.45779418945312
+at iteration  24
+Epoch 20, Loss: 72.87275695800781
+Epoch 40, Loss: 64.38389587402344
+Epoch 60, Loss: 69.07994842529297
+Epoch 80, Loss: 57.68379211425781
+Epoch 100, Loss: 83.6703109741211
+at iteration  25
+Epoch 20, Loss: 58.84749984741211
+Epoch 40, Loss: 67.10089874267578
+Epoch 60, Loss: 88.5853271484375
+Epoch 80, Loss: 83.37598419189453
+Epoch 100, Loss: 63.36976623535156
+at iteration  26
+Epoch 20, Loss: 57.612796783447266
+Epoch 40, Loss: 75.12088775634766
+Epoch 60, Loss: 57.63448715209961
+Epoch 80, Loss: 73.44145202636719
+Epoch 100, Loss: 59.91257095336914
+at iteration  27
+Epoch 20, Loss: 64.75462341308594
+Epoch 40, Loss: 55.0439338684082
+Epoch 60, Loss: 65.96674346923828
+Epoch 80, Loss: 63.383766174316406
+Epoch 100, Loss: 57.3179931640625
+at iteration  28
+Epoch 20, Loss: 56.45111846923828
+Epoch 40, Loss: 62.42133712768555
+Epoch 60, Loss: 80.87996673583984
+Epoch 80, Loss: 56.333431243896484
+Epoch 100, Loss: 61.6008415222168
+at iteration  29
+Epoch 20, Loss: 76.55005645751953
+Epoch 40, Loss: 63.80674743652344
+Epoch 60, Loss: 52.678001403808594
+Epoch 80, Loss: 48.397117614746094
+Epoch 100, Loss: 67.77452850341797
+at iteration  30
+Epoch 20, Loss: 69.76801300048828
+Epoch 40, Loss: 56.568206787109375
+Epoch 60, Loss: 48.34272766113281
+Epoch 80, Loss: 58.20360565185547
+Epoch 100, Loss: 53.02627944946289
+at iteration  31
+Epoch 20, Loss: 51.50575256347656
+Epoch 40, Loss: 45.812400817871094
+Epoch 60, Loss: 54.475685119628906
+Epoch 80, Loss: 42.28063201904297
+Epoch 100, Loss: 51.37567138671875
+at iteration  32
+Epoch 20, Loss: 38.415157318115234
+Epoch 40, Loss: 42.17200469970703
+Epoch 60, Loss: 56.0338249206543
+Epoch 80, Loss: 53.90886306762695
+Epoch 100, Loss: 37.96317672729492
+at iteration  33
+Epoch 20, Loss: 51.043067932128906
+Epoch 40, Loss: 60.31974411010742
+Epoch 60, Loss: 49.59025955200195
+Epoch 80, Loss: 47.09131622314453
+Epoch 100, Loss: 36.923828125
+at iteration  34
+Epoch 20, Loss: 44.659080505371094
+Epoch 40, Loss: 45.30121994018555
+Epoch 60, Loss: 35.136924743652344
+Epoch 80, Loss: 54.24717712402344
+Epoch 100, Loss: 48.217830657958984
+at iteration  35
+Epoch 20, Loss: 42.46255874633789
+Epoch 40, Loss: 43.57032775878906
+Epoch 60, Loss: 33.6771354675293
+Epoch 80, Loss: 48.951995849609375
+Epoch 100, Loss: 42.07381057739258
+at iteration  36
+Epoch 20, Loss: 43.80380630493164
+Epoch 40, Loss: 37.09439468383789
+Epoch 60, Loss: 44.92904281616211
+Epoch 80, Loss: 36.23283004760742
+Epoch 100, Loss: 43.18695068359375
+at iteration  37
+Epoch 20, Loss: 37.723819732666016
+Epoch 40, Loss: 46.613914489746094
+Epoch 60, Loss: 48.017311096191406
+Epoch 80, Loss: 49.262962341308594
+Epoch 100, Loss: 40.93818664550781
+at iteration  38
+Epoch 20, Loss: 34.47206497192383
+Epoch 40, Loss: 48.807743072509766
+Epoch 60, Loss: 45.76880645751953
+Epoch 80, Loss: 27.516571044921875
+Epoch 100, Loss: 63.80720520019531
+at iteration  39
+Epoch 20, Loss: 42.872947692871094
+Epoch 40, Loss: 38.70052719116211
+Epoch 60, Loss: 37.27110290527344
+Epoch 80, Loss: 42.75920104980469
+Epoch 100, Loss: 36.212406158447266
+at iteration  40
+Epoch 20, Loss: 51.536109924316406
+Epoch 40, Loss: 38.8011474609375
+Epoch 60, Loss: 32.95392990112305
+Epoch 80, Loss: 30.545272827148438
+Epoch 100, Loss: 34.74196243286133
+at iteration  41
+Epoch 20, Loss: 35.534088134765625
+Epoch 40, Loss: 27.569692611694336
+Epoch 60, Loss: 32.18111801147461
+Epoch 80, Loss: 25.676015853881836
+Epoch 100, Loss: 36.2375373840332
+at iteration  42
+Epoch 20, Loss: 30.16203498840332
+Epoch 40, Loss: 45.158973693847656
+Epoch 60, Loss: 28.170406341552734
+Epoch 80, Loss: 34.04193878173828
+Epoch 100, Loss: 29.83017921447754
+at iteration  43
+Epoch 20, Loss: 33.3470458984375
+Epoch 40, Loss: 45.04928970336914
+Epoch 60, Loss: 31.236045837402344
+Epoch 80, Loss: 31.174945831298828
+Epoch 100, Loss: 34.98698425292969
+at iteration  44
+Epoch 20, Loss: 30.278589248657227
+Epoch 40, Loss: 26.58574104309082
+Epoch 60, Loss: 39.20826721191406
+Epoch 80, Loss: 25.325532913208008
+Epoch 100, Loss: 31.038623809814453
+at iteration  45
+Epoch 20, Loss: 33.986106872558594
+Epoch 40, Loss: 38.751068115234375
+Epoch 60, Loss: 37.283775329589844
+Epoch 80, Loss: 23.71442222595215
+Epoch 100, Loss: 26.928359985351562
+at iteration  46
+Epoch 20, Loss: 32.90003967285156
+Epoch 40, Loss: 31.858156204223633
+Epoch 60, Loss: 35.879798889160156
+Epoch 80, Loss: 27.102243423461914
+Epoch 100, Loss: 20.743927001953125
+at iteration  47
+Epoch 20, Loss: 30.72406005859375
+Epoch 40, Loss: 21.296390533447266
+Epoch 60, Loss: 28.187397003173828
+Epoch 80, Loss: 29.202835083007812
+Epoch 100, Loss: 30.934289932250977
+at iteration  48
+Epoch 20, Loss: 31.918750762939453
+Epoch 40, Loss: 24.393497467041016
+Epoch 60, Loss: 29.845266342163086
+Epoch 80, Loss: 28.013080596923828
+Epoch 100, Loss: 33.525970458984375
+at iteration  49
+Epoch 20, Loss: 26.51888656616211
+Epoch 40, Loss: 22.578231811523438
+Epoch 60, Loss: 26.50030517578125
+Epoch 80, Loss: 33.19727325439453
+Epoch 100, Loss: 28.779022216796875
+at iteration  50
+Epoch 20, Loss: 29.63493537902832
+Epoch 40, Loss: 26.29295539855957
+Epoch 60, Loss: 18.910005569458008
+Epoch 80, Loss: 32.051605224609375
+Epoch 100, Loss: 27.64138412475586
+at iteration  51
+Epoch 20, Loss: 27.26826286315918
+Epoch 40, Loss: 31.936885833740234
+Epoch 60, Loss: 26.00787353515625
+Epoch 80, Loss: 32.58940124511719
+Epoch 100, Loss: 22.384008407592773
+at iteration  52
+Epoch 20, Loss: 33.730438232421875
+Epoch 40, Loss: 36.6817741394043
+Epoch 60, Loss: 26.782440185546875
+Epoch 80, Loss: 27.772872924804688
+Epoch 100, Loss: 23.87574577331543
+at iteration  53
+Epoch 20, Loss: 22.625551223754883
+Epoch 40, Loss: 26.348064422607422
+Epoch 60, Loss: 28.27758026123047
+Epoch 80, Loss: 22.046958923339844
+Epoch 100, Loss: 20.95924949645996
+at iteration  54
+Epoch 20, Loss: 20.72273826599121
+Epoch 40, Loss: 21.22429656982422
+Epoch 60, Loss: 17.326353073120117
+Epoch 80, Loss: 19.853246688842773
+Epoch 100, Loss: 17.82558822631836
+at iteration  55
+Epoch 20, Loss: 22.930267333984375
+Epoch 40, Loss: 25.07733726501465
+Epoch 60, Loss: 18.989336013793945
+Epoch 80, Loss: 24.503074645996094
+Epoch 100, Loss: 22.2039794921875
+at iteration  56
+Epoch 20, Loss: 24.250568389892578
+Epoch 40, Loss: 19.725582122802734
+Epoch 60, Loss: 21.580968856811523
+Epoch 80, Loss: 19.624799728393555
+Epoch 100, Loss: 29.58786964416504
+at iteration  57
+Epoch 20, Loss: 16.319446563720703
+Epoch 40, Loss: 23.2204647064209
+Epoch 60, Loss: 21.365222930908203
+Epoch 80, Loss: 20.438499450683594
+Epoch 100, Loss: 27.478504180908203
+at iteration  58
+Epoch 20, Loss: 22.899961471557617
+Epoch 40, Loss: 21.331146240234375
+Epoch 60, Loss: 16.392702102661133
+Epoch 80, Loss: 25.67958641052246
+Epoch 100, Loss: 23.130290985107422
+at iteration  59
+Epoch 20, Loss: 18.985790252685547
+Epoch 40, Loss: 23.224267959594727
+Epoch 60, Loss: 16.852157592773438
+Epoch 80, Loss: 16.313175201416016
+Epoch 100, Loss: 17.049293518066406
+at iteration  60
+Epoch 20, Loss: 16.043460845947266
+Epoch 40, Loss: 15.345749855041504
+Epoch 60, Loss: 12.578132629394531
+Epoch 80, Loss: 21.244741439819336
+Epoch 100, Loss: 20.286888122558594
+at iteration  61
+Epoch 20, Loss: 16.909557342529297
+Epoch 40, Loss: 18.96090316772461
+Epoch 60, Loss: 17.31739044189453
+Epoch 80, Loss: 18.609956741333008
+Epoch 100, Loss: 19.58869171142578
+at iteration  62
+Epoch 20, Loss: 19.038070678710938
+Epoch 40, Loss: 15.501450538635254
+Epoch 60, Loss: 14.036020278930664
+Epoch 80, Loss: 17.96866798400879
+Epoch 100, Loss: 13.69631576538086
+at iteration  63
+Epoch 20, Loss: 13.669285774230957
+Epoch 40, Loss: 18.28426742553711
+Epoch 60, Loss: 16.795677185058594
+Epoch 80, Loss: 13.29080867767334
+Epoch 100, Loss: 17.528432846069336
+at iteration  64
+Epoch 20, Loss: 16.92586898803711
+Epoch 40, Loss: 16.913148880004883
+Epoch 60, Loss: 16.89606285095215
+Epoch 80, Loss: 13.250862121582031
+Epoch 100, Loss: 16.693477630615234
+at iteration  65
+Epoch 20, Loss: 13.638590812683105
+Epoch 40, Loss: 16.642518997192383
+Epoch 60, Loss: 16.725587844848633
+Epoch 80, Loss: 16.175893783569336
+Epoch 100, Loss: 14.666869163513184
+at iteration  66
+Epoch 20, Loss: 15.838279724121094
+Epoch 40, Loss: 15.395490646362305
+Epoch 60, Loss: 17.198162078857422
+Epoch 80, Loss: 14.843110084533691
+Epoch 100, Loss: 19.381603240966797
+at iteration  67
+Epoch 20, Loss: 10.647514343261719
+Epoch 40, Loss: 17.016828536987305
+Epoch 60, Loss: 12.656898498535156
+Epoch 80, Loss: 13.820829391479492
+Epoch 100, Loss: 15.387497901916504
+at iteration  68
+Epoch 20, Loss: 16.222103118896484
+Epoch 40, Loss: 13.27089786529541
+Epoch 60, Loss: 16.395654678344727
+Epoch 80, Loss: 11.119290351867676
+Epoch 100, Loss: 11.77490234375
+at iteration  69
+Epoch 20, Loss: 15.837066650390625
+Epoch 40, Loss: 11.475693702697754
+Epoch 60, Loss: 12.563690185546875
+Epoch 80, Loss: 12.643324851989746
+Epoch 100, Loss: 10.554643630981445
+at iteration  70
+Epoch 20, Loss: 13.659969329833984
+Epoch 40, Loss: 13.475253105163574
+Epoch 60, Loss: 13.568975448608398
+Epoch 80, Loss: 12.50722599029541
+Epoch 100, Loss: 15.81025218963623
+at iteration  71
+Epoch 20, Loss: 13.01445198059082
+Epoch 40, Loss: 9.139853477478027
+Epoch 60, Loss: 11.039192199707031
+Epoch 80, Loss: 16.240478515625
+Epoch 100, Loss: 12.943307876586914
+at iteration  72
+Epoch 20, Loss: 14.758975982666016
+Epoch 40, Loss: 10.736777305603027
+Epoch 60, Loss: 11.569718360900879
+Epoch 80, Loss: 13.131847381591797
+Epoch 100, Loss: 12.28272819519043
+at iteration  73
+Epoch 20, Loss: 10.641179084777832
+Epoch 40, Loss: 11.791866302490234
+Epoch 60, Loss: 9.804203987121582
+Epoch 80, Loss: 12.809481620788574
+Epoch 100, Loss: 9.547335624694824
+at iteration  74
+Epoch 20, Loss: 9.217308044433594
+Epoch 40, Loss: 12.151785850524902
+Epoch 60, Loss: 10.763917922973633
+Epoch 80, Loss: 9.720075607299805
+Epoch 100, Loss: 8.104386329650879
+at iteration  75
+Epoch 20, Loss: 12.840373992919922
+Epoch 40, Loss: 11.148757934570312
+Epoch 60, Loss: 11.625967025756836
+Epoch 80, Loss: 9.91373348236084
+Epoch 100, Loss: 10.550368309020996
+at iteration  76
+Epoch 20, Loss: 11.052553176879883
+Epoch 40, Loss: 13.985011100769043
+Epoch 60, Loss: 10.031209945678711
+Epoch 80, Loss: 9.503487586975098
+Epoch 100, Loss: 10.793510437011719
+at iteration  77
+Epoch 20, Loss: 16.09278106689453
+Epoch 40, Loss: 10.884322166442871
+Epoch 60, Loss: 11.384770393371582
+Epoch 80, Loss: 9.657100677490234
+Epoch 100, Loss: 11.400182723999023
+at iteration  78
+Epoch 20, Loss: 7.154674530029297
+Epoch 40, Loss: 11.072110176086426
+Epoch 60, Loss: 8.654974937438965
+Epoch 80, Loss: 9.188496589660645
+Epoch 100, Loss: 12.377971649169922
+at iteration  79
+Epoch 20, Loss: 10.775595664978027
+Epoch 40, Loss: 8.69578742980957
+Epoch 60, Loss: 10.059187889099121
+Epoch 80, Loss: 9.322598457336426
+Epoch 100, Loss: 8.64159107208252
+at iteration  80
+Epoch 20, Loss: 10.145737648010254
+Epoch 40, Loss: 9.638856887817383
+Epoch 60, Loss: 8.269137382507324
+Epoch 80, Loss: 7.242361068725586
+Epoch 100, Loss: 10.739555358886719
+at iteration  81
+Epoch 20, Loss: 9.352542877197266
+Epoch 40, Loss: 9.488701820373535
+Epoch 60, Loss: 8.423877716064453
+Epoch 80, Loss: 6.683478832244873
+Epoch 100, Loss: 7.989295959472656
+at iteration  82
+Epoch 20, Loss: 7.948206901550293
+Epoch 40, Loss: 8.815464973449707
+Epoch 60, Loss: 9.722561836242676
+Epoch 80, Loss: 11.900919914245605
+Epoch 100, Loss: 8.54236125946045
+at iteration  83
+Epoch 20, Loss: 6.587281703948975
+Epoch 40, Loss: 9.14787769317627
+Epoch 60, Loss: 7.635756969451904
+Epoch 80, Loss: 8.629676818847656
+Epoch 100, Loss: 9.213194847106934
+at iteration  84
+Epoch 20, Loss: 8.091507911682129
+Epoch 40, Loss: 7.185795307159424
+Epoch 60, Loss: 8.114453315734863
+Epoch 80, Loss: 8.676974296569824
+Epoch 100, Loss: 9.91032886505127
+at iteration  85
+Epoch 20, Loss: 6.94828987121582
+Epoch 40, Loss: 8.420756340026855
+Epoch 60, Loss: 10.769163131713867
+Epoch 80, Loss: 7.956056594848633
+Epoch 100, Loss: 7.49806022644043
+at iteration  86
+Epoch 20, Loss: 6.841029167175293
+Epoch 40, Loss: 7.940121650695801
+Epoch 60, Loss: 8.203641891479492
+Epoch 80, Loss: 7.898085117340088
+Epoch 100, Loss: 9.009428024291992
+at iteration  87
+Epoch 20, Loss: 7.204479694366455
+Epoch 40, Loss: 7.552764415740967
+Epoch 60, Loss: 6.860532283782959
+Epoch 80, Loss: 7.77629280090332
+Epoch 100, Loss: 7.877443313598633
+at iteration  88
+Epoch 20, Loss: 6.779455661773682
+Epoch 40, Loss: 7.2395100593566895
+Epoch 60, Loss: 8.021344184875488
+Epoch 80, Loss: 6.894320964813232
+Epoch 100, Loss: 6.363199234008789
+at iteration  89
+Epoch 20, Loss: 8.221601486206055
+Epoch 40, Loss: 8.076153755187988
+Epoch 60, Loss: 5.668369770050049
+Epoch 80, Loss: 7.809762477874756
+Epoch 100, Loss: 8.32790756225586
+at iteration  90
+Epoch 20, Loss: 7.9357523918151855
+Epoch 40, Loss: 7.357870101928711
+Epoch 60, Loss: 7.6304931640625
+Epoch 80, Loss: 5.780115127563477
+Epoch 100, Loss: 8.489984512329102
+at iteration  91
+Epoch 20, Loss: 6.7760114669799805
+Epoch 40, Loss: 6.7231926918029785
+Epoch 60, Loss: 5.764585018157959
+Epoch 80, Loss: 8.743396759033203
+Epoch 100, Loss: 8.17813491821289
+at iteration  92
+Epoch 20, Loss: 10.181134223937988
+Epoch 40, Loss: 5.665157794952393
+Epoch 60, Loss: 5.925318717956543
+Epoch 80, Loss: 8.17198371887207
+Epoch 100, Loss: 6.460105895996094
+at iteration  93
+Epoch 20, Loss: 5.376989841461182
+Epoch 40, Loss: 6.710268497467041
+Epoch 60, Loss: 6.396397113800049
+Epoch 80, Loss: 7.666585922241211
+Epoch 100, Loss: 6.250908851623535
+at iteration  94
+Epoch 20, Loss: 5.798688888549805
+Epoch 40, Loss: 7.845113754272461
+Epoch 60, Loss: 6.997126579284668
+Epoch 80, Loss: 5.882572174072266
+Epoch 100, Loss: 6.445266246795654
+at iteration  95
+Epoch 20, Loss: 5.337428569793701
+Epoch 40, Loss: 7.980869770050049
+Epoch 60, Loss: 6.6323323249816895
+Epoch 80, Loss: 5.9669508934021
+Epoch 100, Loss: 6.496387481689453
+at iteration  96
+Epoch 20, Loss: 4.8926544189453125
+Epoch 40, Loss: 7.02291202545166
+Epoch 60, Loss: 6.082826614379883
+Epoch 80, Loss: 5.651943683624268
+Epoch 100, Loss: 7.018534183502197
+at iteration  97
+Epoch 20, Loss: 6.076117038726807
+Epoch 40, Loss: 5.876133918762207
+Epoch 60, Loss: 3.563706159591675
+Epoch 80, Loss: 5.639965057373047
+Epoch 100, Loss: 4.9282708168029785
+at iteration  98
+Epoch 20, Loss: 6.395722389221191
+Epoch 40, Loss: 6.928924560546875
+Epoch 60, Loss: 5.3632330894470215
+Epoch 80, Loss: 4.339845657348633
+Epoch 100, Loss: 6.056783199310303
+at iteration  99
+Epoch 20, Loss: 6.537735462188721
+Epoch 40, Loss: 4.423122882843018
+Epoch 60, Loss: 6.759982585906982
+Epoch 80, Loss: 6.178003787994385
+Epoch 100, Loss: 4.759474754333496
+at iteration  100
+Epoch 20, Loss: 5.879769325256348
+Epoch 40, Loss: 6.856558799743652
+Epoch 60, Loss: 4.720297336578369
+Epoch 80, Loss: 4.1467671394348145
+Epoch 100, Loss: 5.502572536468506
