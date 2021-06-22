@@ -17,7 +17,6 @@ import sys
 
 # our imports
 import real_data_random
-import simulate_py_from_MSMC_IM
 import simulation
 import ss_helpers
 import util
