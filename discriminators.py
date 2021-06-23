@@ -27,6 +27,7 @@ class OnePopModel(Model):
 
         self.fc1 = Dense(128, activation='relu')
         self.fc2 = Dense(128, activation='relu')
+        self.fc3 = Dense(4)
         self.dense3 = Dense(1)#2, activation='softmax') # two classes
 
     def call(self, x, training=None):
@@ -46,6 +47,7 @@ class OnePopModel(Model):
         x = self.dropout(x, training=training)
         x = self.fc2(x)
         x = self.dropout(x, training=training)
+        x = self.fc3(x) 
         return self.dense3(x)
 
     def build_graph(self, gt_shape):

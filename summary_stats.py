@@ -32,7 +32,7 @@ NAMES = ["Tajima's D", r'pairwise heterozygosity ($\pi$)', \
 global PREFIX
 PREFIX = ""
 
-COLORS = {"YRI": 'darkorange',"CEU": 'blue',"CHB": 'green'}
+COLORS = {"YRI": 'darkorange',"CEU": 'blue',"CHB": 'green', "CHS": "yellow"}
 SIM_COLOR = 'gray'
 
 # for ooa2 (YRI/CEU)

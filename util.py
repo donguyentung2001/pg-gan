@@ -177,12 +177,14 @@ class ParamSet:
 
 def parse_params(param_input, all_params):
     """See which params were desired for inference"""
+    print(param_input)
     param_strs = param_input.split(',')
     parameters = []
     for p in all_params.all:
         if p.name in param_strs:
             parameters.append(p)
-
+    print(parameters)
+    print(param_strs)
     assert len(parameters) == len(param_strs)
     for p in parameters:
         print(p)

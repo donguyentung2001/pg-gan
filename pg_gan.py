@@ -318,14 +318,28 @@ class PG_GAN:
         trained_encoder = VAE_model.model.encoder
         print("The number of layers in encoder is ", len(trained_encoder.layers))
         print("The number of layers in discriminator is ", len(self.discriminator.layers))
-        for i in range(7):
+        for i in range(8):
             print("changing discriminator's weights in layer ", i)
             trained_encoder_weights = trained_encoder.layers[i].get_weights()
             self.discriminator.layers[i].set_weights(trained_encoder_weights)
-        print("finish pretraining with VAE. The discriminator layers should now be updated.")
-        s_trial = [param.start() for param in self.parameters]
-        self.generator.update_params(s_trial)
-        return s_trial
+        print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
+        #try either 10 times or when acc is 90% for the discriminator with simulated data
+        max_acc = 0 
+        k = 0
+        while max_acc < 0.9 and k < 10:
+            s_trial = [param.start() for param in self.parameters]
+            self.generator.update_params(s_trial)
+            print("trial", k+1, s_trial)
+            real_acc, fake_acc = self.test_accuracy(BATCH_SIZE*NUM_BATCH)
+            avg_acc = (real_acc + fake_acc)/2
+            print("Accuracy now is", avg_acc) 
+            if avg_acc > max_acc:
+                max_acc = avg_acc
+                s_best = s_trial
+                print("New max accuracy is", max_acc)
+            k += 1
+        self.generator.update_params(s_best)
+        return s_best
     def train_sa(self, num_batches, batch_size):
         """Train using fake_values for the simulated data"""
 
@@ -391,6 +405,19 @@ class PG_GAN:
             self.discriminator.trainable_variables))
 
         return real_acc, fake_acc, disc_loss
+
+    def test_accuracy(self, batch_size): 
+        with tf.GradientTape() as disc_tape:
+            # use current params
+            real_regions = self.iterator.real_batch(batch_size, True)
+            generated_regions = self.generator.simulate_batch(BATCH_SIZE)
+
+            real_output = self.discriminator(real_regions, training=True)
+            fake_output = self.discriminator(generated_regions, training=True)
+
+            disc_loss, real_acc, fake_acc = self.discriminator_loss( \
+                real_output, fake_output)
+        return real_acc/batch_size, fake_acc/batch_size
 
 if __name__ == "__main__":
     main()
