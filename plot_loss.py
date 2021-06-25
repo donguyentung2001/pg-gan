@@ -37,9 +37,9 @@ def parse_args():
     return opts
 
 def parse_mini_lst(mini_lst):
+    print("mini list incoming")
     print(mini_lst)
-    return [float(x.replace("[",'').replace("]",'').replace(",",'')) for x in \
-        mini_lst]
+    return [float(x.replace("[",'').replace("]",'').replace(",",'')) for x in mini_lst]
 
 def add_to_lst(total_lst, mini_lst):
     assert len(total_lst) == len(mini_lst)
@@ -139,7 +139,8 @@ def parse_output(filename):
         #if "i, T" in line: # TODO toggle
         if "T, p_accept" in line:
             tokens = line.split()
-
+            print("t p accept")
+            print(tokens)
             # parse current params and add to each list
             num_param = len(true_lst)
             mini_lst = parse_mini_lst(tokens[-1-num_param:-1]) # toggle -1 or -5
