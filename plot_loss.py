@@ -143,6 +143,7 @@ def parse_output(filename):
             # parse current params and add to each list
             num_param = len(true_lst)
             mini_lst = parse_mini_lst(tokens[-1-num_param:-1]) # toggle -1 or -5
+            print(mini_lst)
             add_to_lst(param_lst_all, mini_lst)
 
             # record test accuracy
