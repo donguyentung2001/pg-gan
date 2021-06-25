@@ -37,6 +37,7 @@ def parse_args():
     return opts
 
 def parse_mini_lst(mini_lst):
+    print(mini_lst)
     return [float(x.replace("[",'').replace("]",'').replace(",",'')) for x in \
         mini_lst]
 
@@ -112,7 +113,6 @@ def parse_output(filename):
 
         elif "Epoch 100" in line:
             tokens = line.split()
-            print(tokens)
             disc_loss = float(tokens[3][:-1])
             real_acc = float(tokens[6][:-1])/100
             fake_acc = float(tokens[9])/100
