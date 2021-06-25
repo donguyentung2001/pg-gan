@@ -37,8 +37,6 @@ def parse_args():
     return opts
 
 def parse_mini_lst(mini_lst):
-    print("mini list incoming")
-    print(mini_lst)
     return [float(x.replace("[",'').replace("]",'').replace(",",'')) for x in mini_lst]
 
 def add_to_lst(total_lst, mini_lst):
@@ -113,6 +111,7 @@ def parse_output(filename):
 
         elif "Epoch 100" in line:
             tokens = line.split()
+            print(tokens)
             disc_loss = float(tokens[3][:-1])
             real_acc = float(tokens[6][:-1])/100
             fake_acc = float(tokens[9])/100
@@ -139,12 +138,9 @@ def parse_output(filename):
         #if "i, T" in line: # TODO toggle
         if "T, p_accept" in line:
             tokens = line.split()
-            print("t p accept")
-            print(tokens)
             # parse current params and add to each list
             num_param = len(true_lst)
             mini_lst = parse_mini_lst(tokens[-1-num_param:-1]) # toggle -1 or -5
-            print(mini_lst)
             add_to_lst(param_lst_all, mini_lst)
 
             # record test accuracy
