@@ -39,7 +39,7 @@ def parse_args():
 def parse_mini_lst(mini_lst):
     print("mini list incoming")
     print(mini_lst)
-    return [float(x.replace("[",'').replace("]",'').replace(",",'')) for x in mini_lst[2:]]
+    return [float(x.replace("[",'').replace("]",'').replace(",",'')) for x in mini_lst]
 
 def add_to_lst(total_lst, mini_lst):
     assert len(total_lst) == len(mini_lst)
