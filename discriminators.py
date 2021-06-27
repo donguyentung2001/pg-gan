@@ -40,7 +40,7 @@ class OnePopModel(Model):
         # note axis is 1 b/c first axis is batch
         # can try max or sum as the permutation-invariant function
         #x = tf.math.reduce_max(x, axis=1)
-        x = tf.math.reduce_sum(x, axis=1)
+        x = tf.math.reduce_mean(x, axis=1)
 
         x = self.flatten(x)
         x = self.fc1(x)
