@@ -95,7 +95,7 @@ def process_opts(opts):
 
     # exp growth
     elif opts.model == 'exp':
-        sample_sizes = [198]
+        sample_sizes = [330]
         discriminator = discriminators.OnePopModel()
         simulator = simulation.simulate_exp
         #print("FILTERING SINGLETONS")
