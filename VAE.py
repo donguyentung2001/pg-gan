@@ -66,7 +66,7 @@ class decoderOnePop(Model):
         x = self.conv3(x)
         return x 
 
-class encoderOnePop(Model):
+class encoderTwoPop(Model):
     def __init__(self, latent_dim, pop1, pop2):
         super(encoderOnePop, self).__init__()
 
