@@ -51,7 +51,7 @@ def main():
         random.seed(opts.seed)
         tf.random.set_seed(opts.seed)
 
-    generator, discriminator, iterator, parameters = process_opts(opts)
+    generator, discriminator, iterator, VAE_model, parameters = process_opts(opts)
 
     # grid search
     if opts.grid:
@@ -62,7 +62,7 @@ def main():
     # simulated annealing
     else:
         posterior, loss_lst = simulated_annealing(generator, discriminator,\
-            iterator, parameters, opts.seed, toy=opts.toy)
+            iterator, VAE_model, parameters, opts.seed, toy=opts.toy)
 
     print(posterior)
     print(loss_lst)
@@ -90,6 +90,9 @@ def process_opts(opts):
         sample_sizes = [198]
         discriminator = discriminators.OnePopModel()
         simulator = simulation.simulate_const
+        sample_region = iterator.real_batch(1, True)
+        input_shape= sample_region.shape[1:]
+        VAE_model = VAE_train(iterator, CVAEOnePop(2, input_shape))
         #print("FILTERING SINGLETONS")
         #filter = True
 
@@ -98,6 +101,9 @@ def process_opts(opts):
         sample_sizes = [198] 
         discriminator = discriminators.OnePopModel()
         simulator = simulation.simulate_exp
+        sample_region = iterator.real_batch(1, True)
+        input_shape= sample_region.shape[1:]
+        VAE_model = VAE_train(iterator, CVAEOnePop(2, input_shape))
         #print("FILTERING SINGLETONS")
         #filter = True
 
@@ -144,18 +150,18 @@ def process_opts(opts):
         iterator = simulation.Generator(simulator, param_names, sample_sizes, \
             NUM_SNPS, L, opts.seed, filter=filter) # don't need reco_folder
 
-    return generator, discriminator, iterator, parameters
+    return generator, discriminator, iterator, VAE_model, parameters
 
 ################################################################################
 # SIMULATED ANNEALING
 ################################################################################
 
-def simulated_annealing(generator, discriminator, iterator, parameters, seed, \
+def simulated_annealing(generator, discriminator, iterator, VAE_model, parameters, seed, \
     toy=False):
     """Main function that drives GAN updates"""
 
     # main object for pg-gan
-    pg_gan = PG_GAN(generator, discriminator, iterator, parameters, seed)
+    pg_gan = PG_GAN(generator, discriminator, iterator, VAE_model, parameters, seed)
 
     # find starting point through pre-training (update generator in method)
     if not toy:
@@ -269,7 +275,7 @@ def grid_search(model_type, samples, demo_file, simulator, iterator, \
 
 class PG_GAN:
 
-    def __init__(self, generator, discriminator, iterator, parameters, seed):
+    def __init__(self, generator, discriminator, iterator, VAE_model, parameters, seed):
         """Setup the model and training framework"""
         print("parameters", type(parameters), parameters)
 
@@ -279,6 +285,7 @@ class PG_GAN:
         self.discriminator = discriminator
         self.iterator = iterator # for training data (real or simulated)
         self.parameters = parameters
+        self.VAE_model = VAE_model
 
         # this checks and prints the model (1 is for the batch size)
         self.discriminator.build_graph((1, iterator.num_samples, NUM_SNPS, \
@@ -309,12 +316,8 @@ class PG_GAN:
         # now start!
         self.generator.update_params(s_best)
         return s_best''' 
-        sample_region = self.iterator.real_batch(1, True)
-        input_shape= sample_region.shape[1:]
-        print(input_shape)
-        VAE_model = VAE_train(self.iterator, CVAEOnePop(2, input_shape))
         print("pretraining starts")
-        VAE_model.run_training()
+        self.VAE_model.run_training()
         trained_encoder = VAE_model.model.encoder
         print("The number of layers in encoder is ", len(trained_encoder.layers))
         print("The number of layers in discriminator is ", len(self.discriminator.layers))

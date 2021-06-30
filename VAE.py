@@ -66,6 +66,41 @@ class decoderOnePop(Model):
         x = self.conv3(x)
         return x 
 
+class encoderOnePop(Model):
+    def __init__(self, latent_dim, pop1, pop2):
+        super(encoderOnePop, self).__init__()
+
+        # it is (1,5) for permutation invariance (shape is n X SNPs)
+        self.conv1 = Conv2D(32, (1, 5), activation='relu')
+        self.conv2 = Conv2D(64, (1, 5), activation='relu')
+        self.pool = MaxPooling2D(pool_size = (1,2), strides = (1,2))
+
+        self.flatten = Flatten()
+        self.dropout = Dropout(rate=0.5)
+
+        self.fc1 = Dense(128, activation='relu')
+        self.fc2 = Dense(128, activation='relu')
+        self.dense3 = Dense(latent_dim*2) #two vectors of length latent_dim to represent means and standard deviations.
+
+    def call(self, x, training=None):
+        x = self.conv1(x)
+        x = self.pool(x) # pool
+        x = self.conv2(x)
+        x = self.pool(x) # pool
+
+        # note axis is 1 b/c first axis is batch
+        # can try max or sum as the permutation-invariant function
+        #x = tf.math.reduce_max(x, axis=1)
+        x = tf.math.reduce_mean(x, axis=1)
+
+        x = self.flatten(x)
+        x = self.fc1(x)
+        x = self.dropout(x, training=training)
+        x = self.fc2(x)
+        x = self.dense3(x)
+        return x 
+    def input_size(self, x): 
+        pass 
 
 class CVAEOnePop(Model):
   """Convolutional variational autoencoder."""
