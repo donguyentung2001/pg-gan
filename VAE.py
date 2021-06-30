@@ -4,9 +4,9 @@ from tensorflow.keras import Model
 import numpy as np 
 import keras
 from keras import backend as K
-class encoder(Model):
+class encoderOnePop(Model):
     def __init__(self, latent_dim):
-        super(encoder, self).__init__()
+        super(encoderOnePop, self).__init__()
 
         # it is (1,5) for permutation invariance (shape is n X SNPs)
         self.conv1 = Conv2D(32, (1, 5), activation='relu')
@@ -40,12 +40,12 @@ class encoder(Model):
     def input_size(self, x): 
         pass 
 
-class decoder(Model):
+class decoderOnePop(Model):
     """Single population model - based on defiNETti software."""
 
     def __init__(self, input_shape):
         # the original input we aim to reconstruct
-        super(decoder, self).__init__()
+        super(decoderOnePop, self).__init__()
         self.conv1 = Conv2DTranspose(32, (1, 5), activation='relu', padding = 'same')
         self.conv2 = Conv2DTranspose(64, (1, 5), activation='relu', padding = 'same')
         self.conv3 = Conv2DTranspose(2, (1, 5), padding = 'same')
@@ -67,14 +67,14 @@ class decoder(Model):
         return x 
 
 
-class CVAE(Model):
+class CVAEOnePop(Model):
   """Convolutional variational autoencoder."""
 
   def __init__(self, latent_dim, input_shape):
-    super(CVAE, self).__init__()
+    super(CVAEOnePop, self).__init__()
     self.latent_dim = latent_dim
-    self.encoder = encoder(latent_dim)
-    self.decoder = decoder(input_shape) 
+    self.encoder = encoderOnePop(latent_dim)
+    self.decoder = decoderOnePop(input_shape) 
 
   @tf.function
   def sample(self, eps=None):

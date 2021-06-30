@@ -312,7 +312,7 @@ class PG_GAN:
         sample_region = self.iterator.real_batch(1, True)
         input_shape= sample_region.shape[1:]
         print(input_shape)
-        VAE_model = VAE_train(self.iterator, CVAE(2, input_shape))
+        VAE_model = VAE_train(self.iterator, CVAEOnePop(2, input_shape))
         print("pretraining starts")
         VAE_model.run_training()
         trained_encoder = VAE_model.model.encoder
