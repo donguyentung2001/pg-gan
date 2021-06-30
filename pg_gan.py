@@ -327,7 +327,7 @@ class PG_GAN:
         return s_best''' 
         print("pretraining starts")
         self.VAE_model.run_training()
-        trained_encoder = VAE_model.model.encoder
+        trained_encoder = self.VAE_model.model.encoder
         print("The number of layers in encoder is ", len(trained_encoder.layers))
         print("The number of layers in discriminator is ", len(self.discriminator.layers))
         for i in range(len(trained_encoder.layers)):
