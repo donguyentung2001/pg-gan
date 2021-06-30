@@ -79,6 +79,7 @@ class TwoPopModel(Model):
 
         self.fc1 = Dense(128, activation='relu')
         self.fc2 = Dense(128, activation='relu')
+        self.dense4 = Dense(4)
         self.dense3 = Dense(1) # 2, activation='softmax') # two classes
 
         self.pop1 = pop1
@@ -106,8 +107,8 @@ class TwoPopModel(Model):
         # can try max or sum as the permutation-invariant function
         #x_pop1_max = tf.math.reduce_max(x_pop1, axis=1)
         #x_pop2_max = tf.math.reduce_max(x_pop2, axis=1)
-        x_pop1_sum = tf.math.reduce_sum(x_pop1, axis=1)
-        x_pop2_sum = tf.math.reduce_sum(x_pop2, axis=1)
+        x_pop1_sum = tf.math.reduce_mean(x_pop1, axis=1)
+        x_pop2_sum = tf.math.reduce_mean(x_pop2, axis=1)
 
         # flatten all
         #x_pop1_max = self.flatten(x_pop1_max)
@@ -121,6 +122,7 @@ class TwoPopModel(Model):
         m = self.dropout(m, training=training)
         m = self.fc2(m)
         m = self.dropout(m, training=training)
+        m = self.dense4(m)
         return self.dense3(m)
 
     def build_graph(self, gt_shape):

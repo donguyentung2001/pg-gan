@@ -113,6 +113,9 @@ def process_opts(opts):
         discriminator = discriminators.TwoPopModel(sample_sizes[0], \
             sample_sizes[1])
         simulator = simulation.simulate_im
+        sample_region = iterator.real_batch(1, True)
+        input_shape= sample_region.shape[1:]
+        VAE_model = VAE_train(iterator, CVAETwoPop(2, input_shape, sample_sizes[0], sample_sizes[1]))
 
     # out-of-Africa model (2 populations)
     elif opts.model == 'ooa2':
@@ -120,6 +123,9 @@ def process_opts(opts):
         discriminator = discriminators.TwoPopModel(sample_sizes[0], \
             sample_sizes[1])
         simulator = simulation.simulate_ooa2
+        sample_region = iterator.real_batch(1, True)
+        input_shape= sample_region.shape[1:]
+        VAE_model = VAE_train(iterator, CVAETwoPop(2, input_shape, sample_sizes[0], sample_sizes[1]))
 
     # CEU/CHB (2 populations)
     elif opts.model == 'post_ooa':
@@ -127,6 +133,9 @@ def process_opts(opts):
         discriminator = discriminators.TwoPopModel(sample_sizes[0], \
             sample_sizes[1])
         simulator = simulation.simulate_postOOA
+        sample_region = iterator.real_batch(1, True)
+        input_shape= sample_region.shape[1:]
+        VAE_model = VAE_train(iterator, CVAETwoPop(2, input_shape, sample_sizes[0], sample_sizes[1]))
 
     # out-of-Africa model (3 populations)
     elif opts.model == 'ooa3':
@@ -321,7 +330,7 @@ class PG_GAN:
         trained_encoder = VAE_model.model.encoder
         print("The number of layers in encoder is ", len(trained_encoder.layers))
         print("The number of layers in discriminator is ", len(self.discriminator.layers))
-        for i in range(8):
+        for i in range(len(trained_encoder.layers)):
             print("changing discriminator's weights in layer ", i)
             trained_encoder_weights = trained_encoder.layers[i].get_weights()
             self.discriminator.layers[i].set_weights(trained_encoder_weights)
