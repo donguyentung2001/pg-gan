@@ -11,12 +11,12 @@ for POP in CHS # TODO change to your population
 do
 ​
  # for each chromosome
- for CHROM in `seq 1 22`
- do
-     echo "bcftools view -S ${POP}_gan.txt --min-ac 1:minor -m2 -M2 -v snps -Oz -o ${OUTFOLDER}${POP}.chr${CHROM}${SUFFIX} ${INFOLDER}ALL.chr${CHROM}${SUFFIX}"
-     bcftools view -S CHB_gan.txt --min-ac 1:minor -m2 -M2 -v snps -Oz -o /bigdata/smathieson/pg-gan/1000g/VCF/CHB.chr${CHROM}${SUFFIX} /bigdata/smathieson/pg-gan/1000g/ALL/ALL.chr${CHROM}${SUFFIX}
-     bcftools view -S CHS_gan.txt --min-ac 1:minor -m2 -M2 -v snps -Oz -o /bigdata/smathieson/pg-gan/1000g/VCF/CHS.chr${CHROM}${SUFFIX} /bigdata/smathieson/pg-gan/1000g/ALL/ALL.chr${CHROM}${SUFFIX}
- done
+ #for CHROM in `seq 1 22`
+ #do
+ #    echo "bcftools view -S ${POP}_gan.txt --min-ac 1:minor -m2 -M2 -v snps -Oz -o ${OUTFOLDER}${POP}.chr${CHROM}${SUFFIX} ${INFOLDER}ALL.chr${CHROM}${SUFFIX}"
+ #    bcftools view -S CHB_gan.txt --min-ac 1:minor -m2 -M2 -v snps -Oz -o /bigdata/smathieson/pg-gan/1000g/VCF/CHB.chr${CHROM}${SUFFIX} /bigdata/smathieson/pg-gan/1000g/ALL/ALL.chr${CHROM}${SUFFIX}
+ #    bcftools view -S CHS_gan.txt --min-ac 1:minor -m2 -M2 -v snps -Oz -o /bigdata/smathieson/pg-gan/1000g/VCF/CHS.chr${CHROM}${SUFFIX} /bigdata/smathieson/pg-gan/1000g/ALL/ALL.chr${CHROM}${SUFFIX}
+ #done
 ​
  # then merge into one vcf
  echo "bcftools concat -f ${POP}_filelist.txt -Oz -o ${OUTFOLDER}${POP}${SUFFIX}"
