@@ -106,8 +106,8 @@ class encoderTwoPop(Model):
       # can try max or sum as the permutation-invariant function
       #x_pop1_max = tf.math.reduce_max(x_pop1, axis=1)
       #x_pop2_max = tf.math.reduce_max(x_pop2, axis=1)
-      x_pop1_sum = tf.math.reduce_mean(x_pop1, axis=1)
-      x_pop2_sum = tf.math.reduce_mean(x_pop2, axis=1)
+      x_pop1_sum = tf.math.reduce_sum(x_pop1, axis=1)
+      x_pop2_sum = tf.math.reduce_sum(x_pop2, axis=1)
 
       # flatten all
       #x_pop1_max = self.flatten(x_pop1_max)
