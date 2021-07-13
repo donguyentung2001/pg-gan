@@ -2,9 +2,7 @@ import math
 import numpy as np 
 import random
 import sys
-import tensorflow as tf
 from scipy.optimize import basinhopping 
-from VAE import decoder, encoder, CVAE, train_step, reparameterize_only
 import real_data_random
 import util 
 from sklearn.decomposition import PCA
