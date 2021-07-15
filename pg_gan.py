@@ -22,7 +22,7 @@ import util
 from real_data_random import Region
 from VAE import *
 # globals for simulated annealing
-NUM_ITER = 300
+NUM_ITER = 1
 BATCH_SIZE = 50
 NUM_BATCH = 100
 print("NUM_ITER", NUM_ITER)
@@ -335,6 +335,7 @@ class PG_GAN:
             trained_encoder_weights = trained_encoder.layers[i].get_weights()
             self.discriminator.layers[i].set_weights(trained_encoder_weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
+        visualize_filters(trained_encoder)
         #try either 10 times or when acc is 90% for the discriminator with simulated data
         max_acc = 0 
         k = 0
@@ -431,5 +432,18 @@ class PG_GAN:
                 real_output, fake_output)
         return real_acc/batch_size, fake_acc/batch_size
 
+def visualize_filters(model): 
+    for layer in model.layers: 
+        if "conv" in layer.name: 
+            # get filter weights
+            filters, biases = layer.get_weights()
+            print(layer.name, filters.shape)
+            f_min, f_max = filters.min(), filters.max()
+            filters = (filters - f_min) / (f_max - f_min)
+            filters = tf.squeeze(filters) #get rid of the first dimension since it is 1. 
+            filters = tf.transpose(filters) #put the number of filters first, the number of channels second. and the filter weights last.  
+            print(filters[0][0])
+            print(filters[0][1])
+            print(filters.shape)
 if __name__ == "__main__":
     main()
