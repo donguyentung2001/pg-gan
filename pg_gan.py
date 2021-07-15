@@ -115,7 +115,7 @@ def process_opts(opts):
         simulator = simulation.simulate_im
         sample_region = iterator.real_batch(1, True)
         input_shape= sample_region.shape[1:]
-        VAE_model = VAE_train(iterator, CVAETwoPop(4, input_shape, sample_sizes[0], sample_sizes[1]))
+        VAE_model = VAE_train(iterator, CVAETwoPop(2, input_shape, sample_sizes[0], sample_sizes[1]))
 
     # out-of-Africa model (2 populations)
     elif opts.model == 'ooa2':
@@ -125,7 +125,7 @@ def process_opts(opts):
         simulator = simulation.simulate_ooa2
         sample_region = iterator.real_batch(1, True)
         input_shape= sample_region.shape[1:]
-        VAE_model = VAE_train(iterator, CVAETwoPop(4, input_shape, sample_sizes[0], sample_sizes[1]))
+        VAE_model = VAE_train(iterator, CVAETwoPop(2, input_shape, sample_sizes[0], sample_sizes[1]))
 
     # CEU/CHB (2 populations)
     elif opts.model == 'post_ooa':
@@ -135,7 +135,7 @@ def process_opts(opts):
         simulator = simulation.simulate_postOOA
         sample_region = iterator.real_batch(1, True)
         input_shape= sample_region.shape[1:]
-        VAE_model = VAE_train(iterator, CVAETwoPop(4, input_shape, sample_sizes[0], sample_sizes[1]))
+        VAE_model = VAE_train(iterator, CVAETwoPop(2, input_shape, sample_sizes[0], sample_sizes[1]))
 
     # out-of-Africa model (3 populations)
     elif opts.model == 'ooa3':

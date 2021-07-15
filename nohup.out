@@ -1,0 +1,24 @@
+NUM_SNPS 36
+L 50000
+NUM_CLASSES 2
+NUM_CHANNELS 2
+mandatory option params is missing
+
+Usage: pca_visual.py [options]
+
+PG-GAN entry point
+
+Options:
+  -h, --help            show this help message and exit
+  -m MODEL, --model=MODEL
+                        exp, im, ooa2, ooa3
+  -p PARAMS, --params=PARAMS
+                        comma separated parameter list
+  -d DATA_H5, --data_h5=DATA_H5
+                        real data file
+  -b BED, --bed=BED     bed file (mask)
+  -r RECO_FOLDER, --reco_folder=RECO_FOLDER
+                        recombination maps
+  -g                    grid search
+  -t                    toy example
+  -s SEED, --seed=SEED  seed for RNG
