@@ -452,11 +452,10 @@ def visualize_filters(model):
                 for j,axes in enumerate(ax_row):
                     current_filter = filters[i*4+j][0] 
                     current_filter = tf.expand_dims(current_filter, axis=0)
-                    print(current_filter.shape)
                     axes.set_yticks([])
                     axes.set_xticks([])
-                    plt.imshow(current_filter, cmap='gray')
-            plt.savefig("filters")
+                    axes.imshow(current_filter, cmap='gray')
+            plt.savefig(layer.name)
 
 if __name__ == "__main__":
     main()
