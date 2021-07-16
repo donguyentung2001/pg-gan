@@ -450,6 +450,8 @@ def visualize_filters(model):
             fig, ax = plt.subplots(int(filters.shape[0]/8), 8) 
             for i,ax_row in enumerate(ax):
                 for j,axes in enumerate(ax_row):
+                    current_filter = filters[i*4+j][0] 
+                    current_filter = tf.expand_dims(current_filter, axis=0)
                     axes.set_yticks([])
                     axes.set_xticks([])
                     plt.imshow(filters[i*4+j][0], cmap='gray')
