@@ -18,7 +18,7 @@ import discriminators
 import real_data_random
 import simulation
 import util
-
+import matplotlib.pyplot as plt
 from real_data_random import Region
 from VAE import *
 # globals for simulated annealing
@@ -442,10 +442,18 @@ def visualize_filters(model):
             filters = (filters - f_min) / (f_max - f_min)
             filters = tf.squeeze(filters) #get rid of the first dimension since it is 1. 
             filters = tf.transpose(filters) #put the number of filters first, the number of channels second. and the filter weights last.  
-            for i in range(filters.shape[0]):
-                print(filters[i][0])
             print(filters[0][0])
             print(filters[0][1])
             print(filters.shape)
+            for i in range(filters.shape[0]):
+                print(filters[i][0])
+            fig, ax = plt.subplots(filters.shape[0]/8, 8) 
+            for i,ax_row in enumerate(ax):
+                for j,axes in enumerate(ax_row):
+                    axes.set_yticklabels([])
+                    axes.set_xticklabels([])
+                    plt.imshow(filters[i*4+j][0])
+            plt.savefig("filters")
+
 if __name__ == "__main__":
     main()
