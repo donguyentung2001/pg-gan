@@ -442,6 +442,8 @@ def visualize_filters(model):
             filters = (filters - f_min) / (f_max - f_min)
             filters = tf.squeeze(filters) #get rid of the first dimension since it is 1. 
             filters = tf.transpose(filters) #put the number of filters first, the number of channels second. and the filter weights last.  
+            for i in range(filters.shape[0]):
+                print(filters[i][0])
             print(filters[0][0])
             print(filters[0][1])
             print(filters.shape)
