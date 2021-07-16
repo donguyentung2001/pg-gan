@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 from real_data_random import Region
 from VAE import *
 # globals for simulated annealing
-NUM_ITER = 1
+NUM_ITER = 2
 BATCH_SIZE = 50
 NUM_BATCH = 100
 print("NUM_ITER", NUM_ITER)
@@ -243,7 +243,8 @@ def simulated_annealing(generator, discriminator, iterator, VAE_model, parameter
         print(T, p_accept, rand, s_current, loss_curr)
         posterior.append(s_current)
         loss_lst.append(loss_curr)
-
+    
+    visualize_filters(discriminator, "after_training")
     return posterior, loss_lst
 
 def temperature(i, num_iter):
@@ -335,7 +336,7 @@ class PG_GAN:
             trained_encoder_weights = trained_encoder.layers[i].get_weights()
             self.discriminator.layers[i].set_weights(trained_encoder_weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
-        visualize_filters(trained_encoder)
+        visualize_filters(trained_encoder, "pretraining")
         #try either 10 times or when acc is 90% for the discriminator with simulated data
         max_acc = 0 
         k = 0
@@ -432,7 +433,7 @@ class PG_GAN:
                 real_output, fake_output)
         return real_acc/batch_size, fake_acc/batch_size
 
-def visualize_filters(model): 
+def visualize_filters(model, name): 
     for layer in model.layers: 
         if "conv" in layer.name: 
             # get filter weights
@@ -455,7 +456,8 @@ def visualize_filters(model):
                     axes.set_yticks([])
                     axes.set_xticks([])
                     axes.imshow(current_filter, cmap='gray')
-            plt.savefig(layer.name)
+            plot_name = layer.name + name
+            plt.savefig(plot_name)
 
 if __name__ == "__main__":
     main()
