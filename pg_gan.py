@@ -447,12 +447,12 @@ def visualize_filters(model):
             print(filters.shape)
             for i in range(filters.shape[0]):
                 print(filters[i][0])
-            fig, ax = plt.subplots(filters.shape[0]/8, 8) 
+            fig, ax = plt.subplots(int(filters.shape[0]/8), 8) 
             for i,ax_row in enumerate(ax):
                 for j,axes in enumerate(ax_row):
-                    axes.set_yticklabels([])
-                    axes.set_xticklabels([])
-                    plt.imshow(filters[i*4+j][0])
+                    axes.set_yticks([])
+                    axes.set_xticks([])
+                    plt.imshow(filters[i*4+j][0], cmap='gray')
             plt.savefig("filters")
 
 if __name__ == "__main__":
