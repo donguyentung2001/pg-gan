@@ -451,7 +451,9 @@ def visualize_filters(model):
             for i,ax_row in enumerate(ax):
                 for j,axes in enumerate(ax_row):
                     current_filter = filters[i*4+j][0] 
+                    print(current_filter.shape)
                     current_filter = tf.expand_dims(current_filter, axis=0)
+                    print(current_filter.shape)
                     axes.set_yticks([])
                     axes.set_xticks([])
                     plt.imshow(filters[i*4+j][0], cmap='gray')
