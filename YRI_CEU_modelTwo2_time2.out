@@ -1,0 +1,546 @@
+2021-07-16 12:08:21.253180: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2021-07-16 12:08:21.311682: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:65:00.0 name: Quadro P5000 computeCapability: 6.1
+coreClock: 1.7335GHz coreCount: 20 deviceMemorySize: 15.90GiB deviceMemoryBandwidth: 269.00GiB/s
+2021-07-16 12:08:21.311909: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2021-07-16 12:08:21.313674: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2021-07-16 12:08:21.315131: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2021-07-16 12:08:21.315404: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2021-07-16 12:08:21.316763: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2021-07-16 12:08:21.317533: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2021-07-16 12:08:21.320128: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-07-16 12:08:21.321478: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2021-07-16 12:08:21.321754: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2021-07-16 12:08:21.327213: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3600000000 Hz
+2021-07-16 12:08:21.327549: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fd378000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2021-07-16 12:08:21.327569: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2021-07-16 12:08:21.434021: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55de7fd44180 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2021-07-16 12:08:21.434076: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Quadro P5000, Compute Capability 6.1
+2021-07-16 12:08:21.438141: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:65:00.0 name: Quadro P5000 computeCapability: 6.1
+coreClock: 1.7335GHz coreCount: 20 deviceMemorySize: 15.90GiB deviceMemoryBandwidth: 269.00GiB/s
+2021-07-16 12:08:21.438238: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2021-07-16 12:08:21.438267: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2021-07-16 12:08:21.438291: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2021-07-16 12:08:21.438315: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2021-07-16 12:08:21.438338: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2021-07-16 12:08:21.438361: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2021-07-16 12:08:21.438384: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-07-16 12:08:21.440954: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2021-07-16 12:08:21.441022: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2021-07-16 12:08:21.442591: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-07-16 12:08:21.442623: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0 
+2021-07-16 12:08:21.442637: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N 
+2021-07-16 12:08:21.445340: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 15125 MB memory) -> physical GPU (device: 0, name: Quadro P5000, pci bus id: 0000:65:00.0, compute capability: 6.1)
+2021-07-16 12:08:28.521469: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2021-07-16 12:08:28.636827: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+NUM_ITER 70
+BATCH_SIZE 50
+NUM_BATCH 100
+NUM_SNPS 36
+L 50000
+NUM_CLASSES 2
+NUM_CHANNELS 2
+NUM_ITER 300
+BATCH_SIZE 50
+NUM_BATCH 100
+NUM_SNPS 36
+L 50000
+NUM_CLASSES 2
+NUM_CHANNELS 2
+{'model': 'ooa2', 'params': 'N_anc,N1,N2,N3,T1,T2,mig', 'data_h5': '/bigdata/smathieson/pg-gan/1000g/HDF5/YRI_CEU.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.h5', 'bed': '/bigdata/smathieson/pg-gan/1000g/HDF5/20120824_strict_mask.bed', 'reco_folder': '/bigdata/smathieson/pg-gan/1000g/genetic_map/', 'grid': None, 'toy': None, 'seed': 1833}
+N_anc,N1,N2,N3,T1,T2,mig
+[<util.Parameter object at 0x7fd5357aacd0>, <util.Parameter object at 0x7fd5358dae90>, <util.Parameter object at 0x7fd5358dac90>, <util.Parameter object at 0x7fd5358dacd0>, <util.Parameter object at 0x7fd5358da950>, <util.Parameter object at 0x7fd5358da510>, <util.Parameter object at 0x7fd535860e90>]
+['N_anc', 'N1', 'N2', 'N3', 'T1', 'T2', 'mig']
+NAME	VALUE	MIN	MAX
+N_anc	15000	1000	25000
+NAME	VALUE	MIN	MAX
+mig	0.05	-0.2	0.2
+NAME	VALUE	MIN	MAX
+N1	9000	1000	30000
+NAME	VALUE	MIN	MAX
+N2	5000	1000	30000
+NAME	VALUE	MIN	MAX
+N3	12000	1000	30000
+NAME	VALUE	MIN	MAX
+T1	2000	1500	5000
+NAME	VALUE	MIN	MAX
+T2	350	100	1500
+['calldata', 'variants']
+['GT'] ['CHROM', 'POS']
+raw (20884132, 98, 2)
+after haps (20884132, 196)
+Parsing HapMap recombination rates...
+parameters <class 'list'> [<util.Parameter object at 0x7fd5357aacd0>, <util.Parameter object at 0x7fd5358dae90>, <util.Parameter object at 0x7fd5358dac90>, <util.Parameter object at 0x7fd5358dacd0>, <util.Parameter object at 0x7fd5358da950>, <util.Parameter object at 0x7fd5358da510>, <util.Parameter object at 0x7fd535860e90>]
+Model: "two_pop_model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 98, 32, 32)        352       
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 98, 12, 64)        10304     
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) multiple                  0         
+_________________________________________________________________
+flatten (Flatten)            (None, 384)               0         
+_________________________________________________________________
+concatenate (Concatenate)    (None, 768)               0         
+_________________________________________________________________
+dropout (Dropout)            (None, 128)               0         
+_________________________________________________________________
+dense (Dense)                (None, 128)               98432     
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               16512     
+_________________________________________________________________
+dense_2 (Dense)              (None, 8)                 1032      
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 9         
+=================================================================
+Total params: 126,641
+Trainable params: 126,641
+Non-trainable params: 0
+_________________________________________________________________
+pretraining starts
+at iteration  1
+Epoch 20, Loss: 0.8305292129516602
+Epoch 40, Loss: 0.8259884119033813
+Epoch 60, Loss: 0.823073148727417
+Epoch 80, Loss: 0.8180713653564453
+Epoch 100, Loss: 0.7978508472442627
+at iteration  2
+Epoch 20, Loss: 0.7721041440963745
+Epoch 40, Loss: 0.7344233393669128
+Epoch 60, Loss: 0.7153064012527466
+Epoch 80, Loss: 0.7041963338851929
+Epoch 100, Loss: 0.7010008096694946
+at iteration  3
+Epoch 20, Loss: 0.6987664699554443
+Epoch 40, Loss: 0.6968520879745483
+Epoch 60, Loss: 0.6961754560470581
+Epoch 80, Loss: 0.6966861486434937
+Epoch 100, Loss: 0.6954350471496582
+at iteration  4
+Epoch 20, Loss: 0.6956955194473267
+Epoch 40, Loss: 0.6950652003288269
+Epoch 60, Loss: 0.6946495771408081
+Epoch 80, Loss: 0.6945809125900269
+Epoch 100, Loss: 0.6946926116943359
+at iteration  5
+Epoch 20, Loss: 0.6941992044448853
+Epoch 40, Loss: 0.6940824389457703
+Epoch 60, Loss: 0.6943451166152954
+Epoch 80, Loss: 0.6939697861671448
+Epoch 100, Loss: 0.6940509080886841
+at iteration  6
+Epoch 20, Loss: 0.6939502954483032
+Epoch 40, Loss: 0.6938085556030273
+Epoch 60, Loss: 0.6941845417022705
+Epoch 80, Loss: 0.6939022541046143
+Epoch 100, Loss: 0.6937932968139648
+at iteration  7
+Epoch 20, Loss: 0.6938600540161133
+Epoch 40, Loss: 0.6936999559402466
+Epoch 60, Loss: 0.6936185359954834
+Epoch 80, Loss: 0.6939131021499634
+Epoch 100, Loss: 0.6937196254730225
+at iteration  8
+Epoch 20, Loss: 0.6937609910964966
+Epoch 40, Loss: 0.6936594247817993
+Epoch 60, Loss: 0.693656861782074
+Epoch 80, Loss: 0.693584144115448
+Epoch 100, Loss: 0.6936218738555908
+at iteration  9
+Epoch 20, Loss: 0.6935191750526428
+Epoch 40, Loss: 0.6935485601425171
+Epoch 60, Loss: 0.6935902833938599
+Epoch 80, Loss: 0.6936376094818115
+Epoch 100, Loss: 0.6936762928962708
+at iteration  10
+Epoch 20, Loss: 0.6935601234436035
+Epoch 40, Loss: 0.693482518196106
+Epoch 60, Loss: 0.6935315132141113
+Epoch 80, Loss: 0.6934075355529785
+Epoch 100, Loss: 0.6934515237808228
+at iteration  11
+Epoch 20, Loss: 0.6935120820999146
+Epoch 40, Loss: 0.6934478282928467
+Epoch 60, Loss: 0.6934706568717957
+Epoch 80, Loss: 0.693491518497467
+Epoch 100, Loss: 0.69343101978302
+at iteration  12
+Epoch 20, Loss: 0.6934318542480469
+Epoch 40, Loss: 0.693405270576477
+Epoch 60, Loss: 0.6934354305267334
+Epoch 80, Loss: 0.6934513449668884
+Epoch 100, Loss: 0.69342041015625
+at iteration  13
+Epoch 20, Loss: 0.6933780908584595
+Epoch 40, Loss: 0.6933848261833191
+Epoch 60, Loss: 0.6934033632278442
+Epoch 80, Loss: 0.6933443546295166
+Epoch 100, Loss: 0.6933836340904236
+at iteration  14
+Epoch 20, Loss: 0.6934288740158081
+Epoch 40, Loss: 0.6933624744415283
+Epoch 60, Loss: 0.693367600440979
+Epoch 80, Loss: 0.6933488249778748
+Epoch 100, Loss: 0.6934312582015991
+at iteration  15
+Epoch 20, Loss: 0.6934024095535278
+Epoch 40, Loss: 0.6933745741844177
+Epoch 60, Loss: 0.6933726668357849
+Epoch 80, Loss: 0.6934234499931335
+Epoch 100, Loss: 0.6933565139770508
+at iteration  16
+Epoch 20, Loss: 0.69329833984375
+Epoch 40, Loss: 0.6934446096420288
+Epoch 60, Loss: 0.6933913230895996
+Epoch 80, Loss: 0.6933426856994629
+Epoch 100, Loss: 0.6933878660202026
+at iteration  17
+Epoch 20, Loss: 0.693317174911499
+Epoch 40, Loss: 0.6933218836784363
+Epoch 60, Loss: 0.6933193206787109
+Epoch 80, Loss: 0.6933382749557495
+Epoch 100, Loss: 0.6933106184005737
+at iteration  18
+Epoch 20, Loss: 0.6933310031890869
+Epoch 40, Loss: 0.693279504776001
+Epoch 60, Loss: 0.6933044195175171
+Epoch 80, Loss: 0.6932827234268188
+Epoch 100, Loss: 0.6933228969573975
+at iteration  19
+Epoch 20, Loss: 0.6932740211486816
+Epoch 40, Loss: 0.6933308839797974
+Epoch 60, Loss: 0.6933501958847046
+Epoch 80, Loss: 0.6932862997055054
+Epoch 100, Loss: 0.6932590007781982
+at iteration  20
+Epoch 20, Loss: 0.693261981010437
+Epoch 40, Loss: 0.693265438079834
+Epoch 60, Loss: 0.6932580471038818
+Epoch 80, Loss: 0.6932615041732788
+Epoch 100, Loss: 0.6932889223098755
+at iteration  21
+Epoch 20, Loss: 0.6932745575904846
+Epoch 40, Loss: 0.6932647228240967
+Epoch 60, Loss: 0.6932390928268433
+Epoch 80, Loss: 0.6933025121688843
+Epoch 100, Loss: 0.6932567358016968
+at iteration  22
+Epoch 20, Loss: 0.693267822265625
+Epoch 40, Loss: 0.6932576894760132
+Epoch 60, Loss: 0.6932909488677979
+Epoch 80, Loss: 0.6932705640792847
+Epoch 100, Loss: 0.6932602524757385
+at iteration  23
+Epoch 20, Loss: 0.6932705640792847
+Epoch 40, Loss: 0.6932631134986877
+Epoch 60, Loss: 0.6933136582374573
+Epoch 80, Loss: 0.6932607889175415
+Epoch 100, Loss: 0.6932260990142822
+at iteration  24
+Epoch 20, Loss: 0.6932969093322754
+Epoch 40, Loss: 0.6932543516159058
+Epoch 60, Loss: 0.6932345628738403
+Epoch 80, Loss: 0.6932708024978638
+Epoch 100, Loss: 0.6932506561279297
+at iteration  25
+Epoch 20, Loss: 0.6931987404823303
+Epoch 40, Loss: 0.6932483911514282
+Epoch 60, Loss: 0.6932748556137085
+Epoch 80, Loss: 0.6932556629180908
+Epoch 100, Loss: 0.6932439804077148
+at iteration  26
+Epoch 20, Loss: 0.6932355165481567
+Epoch 40, Loss: 0.693239688873291
+Epoch 60, Loss: 0.6932334303855896
+Epoch 80, Loss: 0.6932287216186523
+Epoch 100, Loss: 0.6932346820831299
+at iteration  27
+Epoch 20, Loss: 0.6932281255722046
+Epoch 40, Loss: 0.6932358741760254
+Epoch 60, Loss: 0.6932204961776733
+Epoch 80, Loss: 0.6932114362716675
+Epoch 100, Loss: 0.6932309865951538
+at iteration  28
+Epoch 20, Loss: 0.6932241916656494
+Epoch 40, Loss: 0.6932526230812073
+Epoch 60, Loss: 0.6932156682014465
+Epoch 80, Loss: 0.693232536315918
+Epoch 100, Loss: 0.6932244300842285
+at iteration  29
+Epoch 20, Loss: 0.6932413578033447
+Epoch 40, Loss: 0.6932592391967773
+Epoch 60, Loss: 0.6932573318481445
+Epoch 80, Loss: 0.6932047605514526
+Epoch 100, Loss: 0.6932168006896973
+at iteration  30
+Epoch 20, Loss: 0.6932245492935181
+Epoch 40, Loss: 0.6932052373886108
+Epoch 60, Loss: 0.6932162642478943
+Epoch 80, Loss: 0.6931933164596558
+Epoch 100, Loss: 0.6932277679443359
+at iteration  31
+Epoch 20, Loss: 0.6932154297828674
+Epoch 40, Loss: 0.6932270526885986
+Epoch 60, Loss: 0.6932344436645508
+Epoch 80, Loss: 0.6932121515274048
+Epoch 100, Loss: 0.6932129859924316
+at iteration  32
+Epoch 20, Loss: 0.6932396292686462
+Epoch 40, Loss: 0.6932361125946045
+Epoch 60, Loss: 0.6932011842727661
+Epoch 80, Loss: 0.6932089328765869
+Epoch 100, Loss: 0.6931968927383423
+at iteration  33
+Epoch 20, Loss: 0.6932027339935303
+Epoch 40, Loss: 0.6931948661804199
+Epoch 60, Loss: 0.6932177543640137
+Epoch 80, Loss: 0.6932246685028076
+Epoch 100, Loss: 0.6932011842727661
+at iteration  34
+Epoch 20, Loss: 0.6932058334350586
+Epoch 40, Loss: 0.6931964755058289
+Epoch 60, Loss: 0.693205714225769
+Epoch 80, Loss: 0.6931979060173035
+Epoch 100, Loss: 0.6932207345962524
+at iteration  35
+Epoch 20, Loss: 0.6931979656219482
+Epoch 40, Loss: 0.6931939125061035
+Epoch 60, Loss: 0.6932165622711182
+Epoch 80, Loss: 0.6932054758071899
+Epoch 100, Loss: 0.6932026147842407
+at iteration  36
+Epoch 20, Loss: 0.693233847618103
+Epoch 40, Loss: 0.693191647529602
+Epoch 60, Loss: 0.6932154893875122
+Epoch 80, Loss: 0.6932063698768616
+Epoch 100, Loss: 0.6931878328323364
+at iteration  37
+Epoch 20, Loss: 0.6932042837142944
+Epoch 40, Loss: 0.6931964159011841
+Epoch 60, Loss: 0.6931931972503662
+Epoch 80, Loss: 0.6931869983673096
+Epoch 100, Loss: 0.6931883096694946
+at iteration  38
+Epoch 20, Loss: 0.6932178139686584
+Epoch 40, Loss: 0.6931891441345215
+Epoch 60, Loss: 0.693196713924408
+Epoch 80, Loss: 0.6931846141815186
+Epoch 100, Loss: 0.6932076215744019
+at iteration  39
+Epoch 20, Loss: 0.6931985020637512
+Epoch 40, Loss: 0.6931922435760498
+Epoch 60, Loss: 0.6931872367858887
+Epoch 80, Loss: 0.6931862831115723
+Epoch 100, Loss: 0.6931893825531006
+at iteration  40
+Epoch 20, Loss: 0.6931977272033691
+Epoch 40, Loss: 0.6932008266448975
+Epoch 60, Loss: 0.6931790113449097
+Epoch 80, Loss: 0.6931831240653992
+Epoch 100, Loss: 0.6931912899017334
+at iteration  41
+Epoch 20, Loss: 0.6931740045547485
+Epoch 40, Loss: 0.6931948661804199
+Epoch 60, Loss: 0.6931904554367065
+Epoch 80, Loss: 0.693183422088623
+Epoch 100, Loss: 0.6931824684143066
+at iteration  42
+Epoch 20, Loss: 0.6931862831115723
+Epoch 40, Loss: 0.6931814551353455
+Epoch 60, Loss: 0.6931800842285156
+Epoch 80, Loss: 0.6931781768798828
+Epoch 100, Loss: 0.6931829452514648
+at iteration  43
+Epoch 20, Loss: 0.6931859254837036
+Epoch 40, Loss: 0.6931725740432739
+Epoch 60, Loss: 0.6931770443916321
+Epoch 80, Loss: 0.693185031414032
+Epoch 100, Loss: 0.693181574344635
+at iteration  44
+Epoch 20, Loss: 0.6931792497634888
+Epoch 40, Loss: 0.693170964717865
+Epoch 60, Loss: 0.6931819915771484
+Epoch 80, Loss: 0.6931941509246826
+Epoch 100, Loss: 0.6931765079498291
+at iteration  45
+Epoch 20, Loss: 0.6931766271591187
+Epoch 40, Loss: 0.6931849718093872
+Epoch 60, Loss: 0.6931772828102112
+Epoch 80, Loss: 0.6931743621826172
+Epoch 100, Loss: 0.6931876540184021
+at iteration  46
+Epoch 20, Loss: 0.6931929588317871
+Epoch 40, Loss: 0.693181574344635
+Epoch 60, Loss: 0.693169355392456
+Epoch 80, Loss: 0.6931610107421875
+Epoch 100, Loss: 0.6931723356246948
+at iteration  47
+Epoch 20, Loss: 0.6931741237640381
+Epoch 40, Loss: 0.6931897401809692
+Epoch 60, Loss: 0.693175196647644
+Epoch 80, Loss: 0.6931895017623901
+Epoch 100, Loss: 0.6931725740432739
+at iteration  48
+Epoch 20, Loss: 0.6931740641593933
+Epoch 40, Loss: 0.693174421787262
+Epoch 60, Loss: 0.6931750774383545
+Epoch 80, Loss: 0.6931731700897217
+Epoch 100, Loss: 0.693176805973053
+at iteration  49
+Epoch 20, Loss: 0.6931760311126709
+Epoch 40, Loss: 0.693169355392456
+Epoch 60, Loss: 0.6931710243225098
+Epoch 80, Loss: 0.6931699514389038
+Epoch 100, Loss: 0.6931728720664978
+at iteration  50
+Epoch 20, Loss: 0.6931778788566589
+Epoch 40, Loss: 0.6931799650192261
+Epoch 60, Loss: 0.6931672692298889
+Epoch 80, Loss: 0.6931946277618408
+Epoch 100, Loss: 0.6931707859039307
+at iteration  51
+Epoch 20, Loss: 0.6931722164154053
+Epoch 40, Loss: 0.6931689977645874
+Epoch 60, Loss: 0.6931722164154053
+Epoch 80, Loss: 0.6931661367416382
+Epoch 100, Loss: 0.6931720972061157
+at iteration  52
+Epoch 20, Loss: 0.6931705474853516
+Epoch 40, Loss: 0.6931664347648621
+Epoch 60, Loss: 0.6931690573692322
+Epoch 80, Loss: 0.6931742429733276
+Epoch 100, Loss: 0.6931704878807068
+at iteration  53
+Epoch 20, Loss: 0.6931658387184143
+Epoch 40, Loss: 0.6931685209274292
+Epoch 60, Loss: 0.693166971206665
+Epoch 80, Loss: 0.6931838393211365
+Epoch 100, Loss: 0.6931689977645874
+at iteration  54
+Epoch 20, Loss: 0.6931614279747009
+Epoch 40, Loss: 0.6931701898574829
+Epoch 60, Loss: 0.6931724548339844
+Epoch 80, Loss: 0.6931667327880859
+Epoch 100, Loss: 0.6931663155555725
+at iteration  55
+Epoch 20, Loss: 0.6931706666946411
+Epoch 40, Loss: 0.693166971206665
+Epoch 60, Loss: 0.6931700706481934
+Epoch 80, Loss: 0.6931660175323486
+Epoch 100, Loss: 0.6931624412536621
+at iteration  56
+Epoch 20, Loss: 0.6931701898574829
+Epoch 40, Loss: 0.6931664943695068
+Epoch 60, Loss: 0.6931777000427246
+Epoch 80, Loss: 0.6931664943695068
+Epoch 100, Loss: 0.6931625604629517
+at iteration  57
+Epoch 20, Loss: 0.6931684017181396
+Epoch 40, Loss: 0.6931643486022949
+Epoch 60, Loss: 0.69316565990448
+Epoch 80, Loss: 0.6931741237640381
+Epoch 100, Loss: 0.69316565990448
+at iteration  58
+Epoch 20, Loss: 0.6931591033935547
+Epoch 40, Loss: 0.6931610107421875
+Epoch 60, Loss: 0.6931756734848022
+Epoch 80, Loss: 0.6931643486022949
+Epoch 100, Loss: 0.6931655406951904
+at iteration  59
+Epoch 20, Loss: 0.6931626796722412
+Epoch 40, Loss: 0.6931637525558472
+Epoch 60, Loss: 0.6931614875793457
+Epoch 80, Loss: 0.6931648850440979
+Epoch 100, Loss: 0.6931586861610413
+at iteration  60
+Epoch 20, Loss: 0.6931613683700562
+Epoch 40, Loss: 0.6931661367416382
+Epoch 60, Loss: 0.6931583285331726
+Epoch 80, Loss: 0.6931625604629517
+Epoch 100, Loss: 0.6931649446487427
+at iteration  61
+Epoch 20, Loss: 0.6931626200675964
+Epoch 40, Loss: 0.6931670308113098
+Epoch 60, Loss: 0.6931570768356323
+Epoch 80, Loss: 0.6931585073471069
+Epoch 100, Loss: 0.693157970905304
+at iteration  62
+Epoch 20, Loss: 0.6931630373001099
+Epoch 40, Loss: 0.69316166639328
+Epoch 60, Loss: 0.6931698322296143
+Epoch 80, Loss: 0.6931616067886353
+Epoch 100, Loss: 0.6931658983230591
+at iteration  63
+Epoch 20, Loss: 0.6931644082069397
+Epoch 40, Loss: 0.6931673288345337
+Epoch 60, Loss: 0.6931614875793457
+Epoch 80, Loss: 0.6931667327880859
+Epoch 100, Loss: 0.6931630969047546
+at iteration  64
+Epoch 20, Loss: 0.6931595206260681
+Epoch 40, Loss: 0.6931604146957397
+Epoch 60, Loss: 0.6931593418121338
+Epoch 80, Loss: 0.6931605339050293
+Epoch 100, Loss: 0.6931592226028442
+at iteration  65
+Epoch 20, Loss: 0.6931591033935547
+Epoch 40, Loss: 0.6931557655334473
+Epoch 60, Loss: 0.6931579113006592
+Epoch 80, Loss: 0.6931647062301636
+Epoch 100, Loss: 0.6931620836257935
+at iteration  66
+Epoch 20, Loss: 0.6931611895561218
+Epoch 40, Loss: 0.6931571960449219
+Epoch 60, Loss: 0.6931571960449219
+Epoch 80, Loss: 0.6931639909744263
+Epoch 100, Loss: 0.6931576728820801
+at iteration  67
+Epoch 20, Loss: 0.6931619644165039
+Epoch 40, Loss: 0.6931648850440979
+Epoch 60, Loss: 0.6931583881378174
+Epoch 80, Loss: 0.6931633353233337
+Epoch 100, Loss: 0.6931583881378174
+at iteration  68
+Epoch 20, Loss: 0.6931599378585815
+Epoch 40, Loss: 0.6931604146957397
+Epoch 60, Loss: 0.6931653022766113
+Epoch 80, Loss: 0.6931572556495667
+Epoch 100, Loss: 0.6931599378585815
+at iteration  69
+Epoch 20, Loss: 0.6931623220443726
+Epoch 40, Loss: 0.6931622624397278
+Epoch 60, Loss: 0.6931565999984741
+Epoch 80, Loss: 0.6931582689285278
+Epoch 100, Loss: 0.6931594610214233
+at iteration  70
+Epoch 20, Loss: 0.6931555271148682
+Epoch 40, Loss: 0.6931617856025696
+Epoch 60, Loss: 0.6931600570678711
+Epoch 80, Loss: 0.6931570768356323
+Epoch 100, Loss: 0.6931601762771606
+The number of layers in encoder is  9
+The number of layers in discriminator is  10
+changing discriminator's weights in layer  0
+changing discriminator's weights in layer  1
+changing discriminator's weights in layer  2
+changing discriminator's weights in layer  3
+changing discriminator's weights in layer  4
+changing discriminator's weights in layer  5
+changing discriminator's weights in layer  6
+changing discriminator's weights in layer  7
+changing discriminator's weights in layer  8
+Traceback (most recent call last):
+  File "pg_gan.py", line 463, in <module>
+    main()
+  File "pg_gan.py", line 65, in main
+    iterator, VAE_model, parameters, opts.seed, toy=opts.toy)
+  File "pg_gan.py", line 177, in simulated_annealing
+    s_current = pg_gan.disc_pretraining(800, BATCH_SIZE)
+  File "pg_gan.py", line 337, in disc_pretraining
+    self.discriminator.layers[i].set_weights(trained_encoder_weights)
+  File "/packages/cs/python3.7.7/lib/python3.7/site-packages/tensorflow/python/keras/engine/base_layer.py", line 1540, in set_weights
+    'shape %s' % (ref_shape, weight.shape))
+ValueError: Layer weight shape (128, 8) not compatible with provided weight shape (128, 4)
