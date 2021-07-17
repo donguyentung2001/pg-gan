@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 from real_data_random import Region
 from VAE import *
 # globals for simulated annealing
-NUM_ITER = 1
+NUM_ITER = 300
 BATCH_SIZE = 50
 NUM_BATCH = 100
 print("NUM_ITER", NUM_ITER)

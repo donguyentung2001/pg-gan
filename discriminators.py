@@ -79,7 +79,7 @@ class TwoPopModel(Model):
 
         self.fc1 = Dense(128, activation='relu')
         self.fc2 = Dense(128, activation='relu')
-        self.dense4 = Dense(8)
+        self.dense4 = Dense(4)
         self.dense3 = Dense(1) # 2, activation='softmax') # two classes
 
         self.pop1 = pop1
