@@ -1,0 +1,116 @@
+2021-07-17 08:01:40.734242: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2021-07-17 08:01:40.759943: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-07-17 08:01:40.760185: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:01:00.0 name: Quadro P2000 computeCapability: 6.1
+coreClock: 1.4805GHz coreCount: 8 deviceMemorySize: 4.93GiB deviceMemoryBandwidth: 130.53GiB/s
+2021-07-17 08:01:40.760248: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64:/usr/local/cuda/extras/CUPTI/lib64:/packages/cs/python3.7.7/lib
+2021-07-17 08:01:40.760283: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10'; dlerror: libcublas.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64:/usr/local/cuda/extras/CUPTI/lib64:/packages/cs/python3.7.7/lib
+2021-07-17 08:01:40.760316: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10'; dlerror: libcufft.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64:/usr/local/cuda/extras/CUPTI/lib64:/packages/cs/python3.7.7/lib
+2021-07-17 08:01:40.760348: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10'; dlerror: libcurand.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64:/usr/local/cuda/extras/CUPTI/lib64:/packages/cs/python3.7.7/lib
+2021-07-17 08:01:40.760380: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10'; dlerror: libcusolver.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64:/usr/local/cuda/extras/CUPTI/lib64:/packages/cs/python3.7.7/lib
+2021-07-17 08:01:40.760411: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10'; dlerror: libcusparse.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64:/usr/local/cuda/extras/CUPTI/lib64:/packages/cs/python3.7.7/lib
+2021-07-17 08:01:40.760442: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudnn.so.7'; dlerror: libcudnn.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64:/usr/local/cuda/extras/CUPTI/lib64:/packages/cs/python3.7.7/lib
+2021-07-17 08:01:40.760447: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1598] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-07-17 08:01:40.760624: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2021-07-17 08:01:40.764463: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3000000000 Hz
+2021-07-17 08:01:40.764691: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7f08a0000b60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2021-07-17 08:01:40.764718: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2021-07-17 08:01:40.765520: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-07-17 08:01:40.765531: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      
+NUM_ITER 1
+BATCH_SIZE 50
+NUM_BATCH 100
+NUM_SNPS 36
+L 50000
+NUM_CLASSES 2
+NUM_CHANNELS 2
+NUM_ITER 1
+BATCH_SIZE 50
+NUM_BATCH 100
+NUM_SNPS 36
+L 50000
+NUM_CLASSES 2
+NUM_CHANNELS 2
+{'model': 'ooa2', 'params': 'N_anc,N1,N2,N3,T1,T2,mig', 'data_h5': '/bigdata/smathieson/pg-gan/1000g/HDF5/YRI_CEU.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.h5', 'bed': '/bigdata/smathieson/pg-gan/1000g/HDF5/20120824_strict_mask.bed', 'reco_folder': '/bigdata/smathieson/pg-gan/1000g/genetic_map/', 'grid': None, 'toy': None, 'seed': 1833}
+N_anc,N1,N2,N3,T1,T2,mig
+[<util.Parameter object at 0x7f0a18c8b490>, <util.Parameter object at 0x7f0a18be02d0>, <util.Parameter object at 0x7f0a18be0a90>, <util.Parameter object at 0x7f0a18be0b10>, <util.Parameter object at 0x7f0a18be0fd0>, <util.Parameter object at 0x7f0a18bda8d0>, <util.Parameter object at 0x7f0a18bda810>]
+['N_anc', 'N1', 'N2', 'N3', 'T1', 'T2', 'mig']
+NAME	VALUE	MIN	MAX
+N_anc	15000	1000	25000
+NAME	VALUE	MIN	MAX
+mig	0.05	-0.2	0.2
+NAME	VALUE	MIN	MAX
+N1	9000	1000	30000
+NAME	VALUE	MIN	MAX
+N2	5000	1000	30000
+NAME	VALUE	MIN	MAX
+N3	12000	1000	30000
+NAME	VALUE	MIN	MAX
+T1	2000	1500	5000
+NAME	VALUE	MIN	MAX
+T2	350	100	1500
+['calldata', 'variants']
+['GT'] ['CHROM', 'POS']
+raw (20884132, 98, 2)
+after haps (20884132, 196)
+Parsing HapMap recombination rates...
+parameters <class 'list'> [<util.Parameter object at 0x7f0a18c8b490>, <util.Parameter object at 0x7f0a18be02d0>, <util.Parameter object at 0x7f0a18be0a90>, <util.Parameter object at 0x7f0a18be0b10>, <util.Parameter object at 0x7f0a18be0fd0>, <util.Parameter object at 0x7f0a18bda8d0>, <util.Parameter object at 0x7f0a18bda810>]
+Model: "two_pop_model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 98, 32, 32)        352       
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 98, 12, 64)        10304     
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) multiple                  0         
+_________________________________________________________________
+flatten (Flatten)            (None, 384)               0         
+_________________________________________________________________
+concatenate (Concatenate)    (None, 768)               0         
+_________________________________________________________________
+dropout (Dropout)            (None, 128)               0         
+_________________________________________________________________
+dense (Dense)                (None, 128)               98432     
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               16512     
+_________________________________________________________________
+dense_2 (Dense)              (None, 8)                 1032      
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 9         
+=================================================================
+Total params: 126,641
+Trainable params: 126,641
+Non-trainable params: 0
+_________________________________________________________________
+pretraining starts
+at iteration  1
+Epoch 20, Loss: 0.8305293321609497
+Epoch 40, Loss: 0.8259880542755127
+Epoch 60, Loss: 0.8230732679367065
+Epoch 80, Loss: 0.8180712461471558
+Epoch 100, Loss: 0.7978510856628418
+The number of layers in encoder is  9
+The number of layers in discriminator is  10
+changing discriminator's weights in layer  0
+changing discriminator's weights in layer  1
+changing discriminator's weights in layer  2
+changing discriminator's weights in layer  3
+changing discriminator's weights in layer  4
+changing discriminator's weights in layer  5
+changing discriminator's weights in layer  6
+changing discriminator's weights in layer  7
+changing discriminator's weights in layer  8
+Traceback (most recent call last):
+  File "pg_gan.py", line 463, in <module>
+    main()
+  File "pg_gan.py", line 65, in main
+    iterator, VAE_model, parameters, opts.seed, toy=opts.toy)
+  File "pg_gan.py", line 177, in simulated_annealing
+    s_current = pg_gan.disc_pretraining(800, BATCH_SIZE)
+  File "pg_gan.py", line 337, in disc_pretraining
+    self.discriminator.layers[i].set_weights(trained_encoder_weights)
+  File "/packages/cs/python3.7.7/lib/python3.7/site-packages/tensorflow/python/keras/engine/base_layer.py", line 1540, in set_weights
+    'shape %s' % (ref_shape, weight.shape))
+ValueError: Layer weight shape (128, 8) not compatible with provided weight shape (128, 4)
