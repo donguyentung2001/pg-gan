@@ -244,7 +244,7 @@ def simulated_annealing(generator, discriminator, iterator, VAE_model, parameter
         posterior.append(s_current)
         loss_lst.append(loss_curr)
     
-    visualize_filters(discriminator, "after_trainingYRI_CEU")
+    visualize_filters(discriminator, "after_trainingCHB_CHS")
     return posterior, loss_lst
 
 def temperature(i, num_iter):
@@ -336,7 +336,7 @@ class PG_GAN:
             trained_encoder_weights = trained_encoder.layers[i].get_weights()
             self.discriminator.layers[i].set_weights(trained_encoder_weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
-        visualize_filters(trained_encoder, "pretrainingYRI_CEU")
+        visualize_filters(trained_encoder, "pretrainingCHB_CHS")
         #try either 10 times or when acc is 90% for the discriminator with simulated data
         max_acc = 0 
         k = 0
