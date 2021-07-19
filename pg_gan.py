@@ -467,7 +467,7 @@ def visualize_filters(model, name):
 
 def feature_map_visualization(model): 
     temporary_model = tf.keras.Sequential() 
-    temporary_model.add(Conv2D(32, (1, 5), activation='relu'))
+    temporary_model.add(Conv2D(32, (1, 5), activation='relu', input_shape = (198, 36, 2)))
     trained_encoder_weights = model.layers[0].get_weights()
     temporary_model.layers[0].set_weights(trained_encoder_weights)
     real_regions = model.iterator.real_batch(BATCH_SIZE, True)
