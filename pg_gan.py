@@ -92,7 +92,9 @@ def process_opts(opts):
         simulator = simulation.simulate_const
         sample_region = iterator.real_batch(1, True)
         input_shape= sample_region.shape[1:]
+        print("INPUT SHAPE IS ")
         print(input_shape)
+
         VAE_model = VAE_train(iterator, CVAEOnePop(2, input_shape))
         #print("FILTERING SINGLETONS")
         #filter = True
