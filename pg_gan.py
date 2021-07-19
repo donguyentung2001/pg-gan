@@ -453,7 +453,7 @@ def visualize_filters(model, name):
             for i,ax_row in enumerate(ax):
                 for j,axes in enumerate(ax_row):
                     print("filter being printed is number ", i*int(filters.shape[0]/8)+j)
-                    current_filter = filters[i*int(filters.shape[0]/8)+j][0] 
+                    current_filter = filters[i*8+j][0] 
                     current_filter = tf.expand_dims(current_filter, axis=0)
                     axes.set_yticks([])
                     axes.set_xticks([])
