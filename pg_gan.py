@@ -21,6 +21,8 @@ import util
 import matplotlib.pyplot as plt
 from real_data_random import Region
 from VAE import *
+from tensorflow.keras.layers import Dense, Flatten, Conv1D, Conv2D, MaxPooling2D, AveragePooling1D, Dropout, Concatenate, Conv2DTranspose, Reshape
+from tensorflow.keras import Model
 # globals for simulated annealing
 NUM_ITER = 1
 BATCH_SIZE = 50
@@ -464,7 +466,10 @@ def visualize_filters(model, name):
             plt.savefig(plot_name)
 
 def feature_map_visualization(model): 
-    temporary_model = Model(inputs=model.inputs, outputs=model.layers[0].output)
+    temporary_model = tf.keras.Sequential() 
+    temporary_model.add(Conv2D(32, (1, 5), activation='relu'))
+    trained_encoder_weights = model.layers[0].get_weights()
+    temporary_model.layers[0].set_weights(trained_encoder_weights)
     real_regions = model.iterator.real_batch(BATCH_SIZE, True)
     feature_maps = temporary_model.predict(real_regions)
     print(feature_maps.shape)
