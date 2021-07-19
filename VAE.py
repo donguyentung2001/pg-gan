@@ -9,7 +9,7 @@ class encoderOnePop(Model):
         super(encoderOnePop, self).__init__()
 
         # it is (1,5) for permutation invariance (shape is n X SNPs)
-        self.conv1 = Conv2D(32, (1, 5), activation='relu', input_shape=(198, 36, 2))
+        self.conv1 = Conv2D(32, (1, 5), activation='relu')
         self.conv2 = Conv2D(64, (1, 5), activation='relu')
         self.pool = MaxPooling2D(pool_size = (1,2), strides = (1,2))
 
