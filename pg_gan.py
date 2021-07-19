@@ -477,8 +477,8 @@ def feature_map_visualization(model, iterator, plot_name):
                 current_map = feature_maps[i*7+j] 
                 print('current map is ', i*7+j)
             else: 
-                current_map = feature_maps[96 + i*7+j]
-                print('current map is ', 96 + i*7+j)
+                current_map = feature_maps[96 + (i-2)*7+j]
+                print('current map is ', 96 + (i-2)*7+j)
             axes.set_yticks([])
             axes.set_xticks([])
             axes.imshow(current_map, cmap='gray')
