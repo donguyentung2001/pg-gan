@@ -496,11 +496,11 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     plt.savefig(plot_name + pop2)
     temporary_model2 = tf.keras.Sequential() 
     temporary_model2.add(Conv2D(32, (1, 5), activation='relu', input_shape = (98, 36, 2)))
-    temporary_model2.add(Conv2D(64, (1, 5), activation='relu'))
+    temporary_model2.add(Conv2D(64, (1, 5), activation='relu', input_shape = (98, 32, 32)))
     for i in range(2):
         trained_encoder_weights = model.layers[i].get_weights()
         temporary_model2.layers[i].set_weights(trained_encoder_weights)
-    feature_maps3 = temporary_model2.predict(real_regions[:,:98:,:,:])
+    feature_maps3 = temporary_model2.predict(real_regions[:,:98,:,:])
     print(feature_maps3.shape)
     feature_maps3 = tf.squeeze(feature_maps3)
     fig, ax = plt.subplots(8, 8) 
