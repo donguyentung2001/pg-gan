@@ -466,10 +466,11 @@ def visualize_filters(model, name):
             plt.savefig(plot_name)
 
 def feature_map_visualization(model, iterator): 
-    temporary_model = tf.keras.Sequential() 
-    temporary_model.add(Conv2D(32, (1, 5), activation='relu', input_shape = (198, 36, 2)))
-    trained_encoder_weights = model.layers[0].get_weights()
-    temporary_model.layers[0].set_weights(trained_encoder_weights)
+    #temporary_model = tf.keras.Sequential() 
+    #temporary_model.add(Conv2D(32, (1, 5), activation='relu', input_shape = (198, 36, 2)))
+    #trained_encoder_weights = model.layers[0].get_weights()
+    #temporary_model.layers[0].set_weights(trained_encoder_weights)
+    temporary_model = Model(inputs=model.inputs , outputs=model.layers[0].output)
     real_regions = iterator.real_batch(BATCH_SIZE, True)
     feature_maps = temporary_model.predict(real_regions)
     print(feature_maps.shape)
