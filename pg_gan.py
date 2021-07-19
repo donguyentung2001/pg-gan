@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 from real_data_random import Region
 from VAE import *
 # globals for simulated annealing
-NUM_ITER = 300
+NUM_ITER = 1
 BATCH_SIZE = 50
 NUM_BATCH = 100
 print("NUM_ITER", NUM_ITER)
@@ -244,7 +244,7 @@ def simulated_annealing(generator, discriminator, iterator, VAE_model, parameter
         posterior.append(s_current)
         loss_lst.append(loss_curr)
     
-    visualize_filters(discriminator, "after_trainingCHB_CHS")
+    visualize_filters(discriminator, "after_training")
     return posterior, loss_lst
 
 def temperature(i, num_iter):
@@ -336,7 +336,8 @@ class PG_GAN:
             trained_encoder_weights = trained_encoder.layers[i].get_weights()
             self.discriminator.layers[i].set_weights(trained_encoder_weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
-        visualize_filters(trained_encoder, "pretrainingCHB_CHS")
+        visualize_filters(trained_encoder, "pretraining")
+        feature_map_visualization(trained_encoder) 
         #try either 10 times or when acc is 90% for the discriminator with simulated data
         max_acc = 0 
         k = 0
@@ -459,5 +460,10 @@ def visualize_filters(model, name):
             plot_name = layer.name + name
             plt.savefig(plot_name)
 
+def feature_map_visualization(model): 
+    temporary_model = Model(inputs=model.inputs, outputs=model.layers[0].output)
+    real_regions = model.iterator.real_batch(BATCH_SIZE, True)
+    feature_maps = temporary_model.predict(real_regions)
+    print(feature_maps.shape)
 if __name__ == "__main__":
     main()
