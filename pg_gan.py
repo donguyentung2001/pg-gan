@@ -249,7 +249,7 @@ def simulated_annealing(generator, discriminator, iterator, VAE_model, parameter
         posterior.append(s_current)
         loss_lst.append(loss_curr)
     
-    visualize_filters(discriminator, "after_training")
+    #visualize_filters(discriminator, "after_training")
     feature_map_visualization(discriminator, iterator, "feature_map_aftertraining") 
     return posterior, loss_lst
 
@@ -342,7 +342,7 @@ class PG_GAN:
             trained_encoder_weights = trained_encoder.layers[i].get_weights()
             self.discriminator.layers[i].set_weights(trained_encoder_weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
-        visualize_filters(trained_encoder, "pretraining")
+        #visualize_filters(trained_encoder, "pretraining")
         feature_map_visualization(trained_encoder, self.VAE_model.iterator, "feature_map_pretraining") 
         #try either 10 times or when acc is 90% for the discriminator with simulated data
         max_acc = 0 
@@ -464,27 +464,22 @@ def visualize_filters(model, name):
 
 def feature_map_visualization(model, iterator, plot_name): 
     temporary_model = tf.keras.Sequential() 
-    temporary_model.add(Conv2D(31, (1, 5), activation='relu', input_shape = (198, 36, 2)))
-    #trained_encoder_weights = model.layers[0].get_weights()
-    #temporary_model.layers[0].set_weights(trained_encoder_weights)
+    temporary_model.add(Conv2D(32, (1, 5), activation='relu', input_shape = (198, 36, 2)))
+    trained_encoder_weights = model.layers[0].get_weights()
+    temporary_model.layers[0].set_weights(trained_encoder_weights)
     real_regions = iterator.real_batch(1, True)
     feature_maps = temporary_model.predict(real_regions)
     print(feature_maps.shape)
     feature_maps = tf.squeeze(feature_maps)
-    fig, ax = plt.subplots(4, 7) 
+    fig, ax = plt.subplots(4, 8) 
     for i,ax_row in enumerate(ax):
         for j,axes in enumerate(ax_row):
-            if i < 2:
-                current_map = feature_maps[i*7+j] 
-                print('current map is ', i*7+j)
-            else: 
-                current_map = feature_maps[96 + (i-2)*7+j]
-                print('current map is ', 96 + (i-2)*7+j)
+            current_map = feature_maps[:,:, i*8 + j] 
+            print('current map is ', i*8+j)
             axes.set_yticks([])
             axes.set_xticks([])
             axes.imshow(current_map, cmap='gray')
     plt.savefig(plot_name)
-    '''
     temporary_model.add(Conv2D(64, (1, 5), activation='relu'))
     trained_encoder_weights = model.layers[1].get_weights()
     temporary_model.layers[1].set_weights(trained_encoder_weights)
@@ -495,15 +490,11 @@ def feature_map_visualization(model, iterator, plot_name):
     fig, ax = plt.subplots(4, 7) 
     for i,ax_row in enumerate(ax):
         for j,axes in enumerate(ax_row):
-            if i < 2:
-                current_map = feature_maps[i*7+j] 
-                print('current map is ', i*7+j)
-            else: 
-                current_map = feature_maps[96 + (i-2)*7+j]
-                print('current map is ', 96 + (i-2)*7+j)
+            current_map = feature_maps[:,:, i*8 + j] 
+            print('current map is ', i*8+j)
             axes.set_yticks([])
             axes.set_xticks([])
             axes.imshow(current_map, cmap='gray')
-    plt.savefig(plot_name + "2")'''
+    plt.savefig(plot_name + "2")
 if __name__ == "__main__":
     main()
