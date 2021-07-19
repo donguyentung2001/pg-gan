@@ -503,6 +503,6 @@ def feature_map_visualization(model, iterator, plot_name):
             axes.set_yticks([])
             axes.set_xticks([])
             axes.imshow(current_map, cmap='gray')
-    plt.savefig(plot_name)
+    plt.savefig(plot_name + "2")
 if __name__ == "__main__":
     main()
