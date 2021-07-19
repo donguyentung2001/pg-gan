@@ -341,8 +341,8 @@ class PG_GAN:
             trained_encoder_weights = trained_encoder.layers[i].get_weights()
             self.discriminator.layers[i].set_weights(trained_encoder_weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
-        visualize_filters(trained_encoder, "pretraining")
-        #feature_map_visualization(trained_encoder, self.VAE_model.iterator) 
+        #visualize_filters(trained_encoder, "pretraining")
+        feature_map_visualization(trained_encoder, self.VAE_model.iterator) 
         #try either 10 times or when acc is 90% for the discriminator with simulated data
         max_acc = 0 
         k = 0
@@ -452,7 +452,7 @@ def visualize_filters(model, name):
             fig, ax = plt.subplots(int(filters.shape[0]/8), 8) 
             for i,ax_row in enumerate(ax):
                 for j,axes in enumerate(ax_row):
-                    print("filter being printed is number ", i*int(filters.shape[0]/8)+j)
+                    print("filter being printed is number ", i*8+j)
                     current_filter = filters[i*8+j][0] 
                     current_filter = tf.expand_dims(current_filter, axis=0)
                     axes.set_yticks([])
@@ -473,7 +473,7 @@ def feature_map_visualization(model, iterator, plot_name):
     fig, ax = plt.subplots(4, 49) 
     for i,ax_row in enumerate(ax):
         for j,axes in enumerate(ax_row):
-            current_map = feature_maps[i*4+j] 
+            current_map = feature_maps[i*49+j] 
             axes.set_yticks([])
             axes.set_xticks([])
             axes.imshow(current_map, cmap='gray')
