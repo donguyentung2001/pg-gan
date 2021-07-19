@@ -462,39 +462,62 @@ def visualize_filters(model, name):
             plot_name = layer.name + name
             plt.savefig(plot_name)
 
-def feature_map_visualization(model, iterator, plot_name): 
+def feature_map_visualization(model, iterator, plot_name, pop1, pop2): 
     temporary_model = tf.keras.Sequential() 
-    temporary_model.add(Conv2D(32, (1, 5), activation='relu', input_shape = (198, 36, 2)))
+    temporary_model.add(Conv2D(32, (1, 5), activation='relu', input_shape = (98, 36, 2)))
     trained_encoder_weights = model.layers[0].get_weights()
     temporary_model.layers[0].set_weights(trained_encoder_weights)
     real_regions = iterator.real_batch(1, True)
-    feature_maps = temporary_model.predict(real_regions)
-    print(feature_maps.shape)
-    feature_maps = tf.squeeze(feature_maps)
+    feature_maps1 = temporary_model.predict(real_regions[:98])
+    print(feature_maps1.shape)
+    feature_maps1 = tf.squeeze(feature_maps1)
     fig, ax = plt.subplots(4, 8) 
     for i,ax_row in enumerate(ax):
         for j,axes in enumerate(ax_row):
-            current_map = feature_maps[:,:, i*8 + j] 
+            current_map = feature_maps1[:,:, i*8 + j] 
             print('current map is ', i*8+j)
             axes.set_yticks([])
             axes.set_xticks([])
             axes.imshow(current_map, cmap='gray')
-    plt.savefig(plot_name)
+    plt.savefig(plot_name + pop1)
+    feature_maps2 = temporary_model.predict(real_regions[98:])
+    print(feature_maps2.shape)
+    feature_maps2 = tf.squeeze(feature_maps2)
+    fig, ax = plt.subplots(4, 8) 
+    for i,ax_row in enumerate(ax):
+        for j,axes in enumerate(ax_row):
+            current_map = feature_maps1[:,:, i*8 + j] 
+            print('current map is ', i*8+j)
+            axes.set_yticks([])
+            axes.set_xticks([])
+            axes.imshow(current_map, cmap='gray')
+    plt.savefig(plot_name + pop2)
     temporary_model.add(Conv2D(64, (1, 5), activation='relu'))
     trained_encoder_weights = model.layers[1].get_weights()
     temporary_model.layers[1].set_weights(trained_encoder_weights)
-    real_regions = iterator.real_batch(1, True)
-    feature_maps = temporary_model.predict(real_regions)
-    print(feature_maps.shape)
-    feature_maps = tf.squeeze(feature_maps)
-    fig, ax = plt.subplots(4, 7) 
+    feature_maps3 = temporary_model.predict(real_regions[:98])
+    print(feature_maps3.shape)
+    feature_maps3 = tf.squeeze(feature_maps3)
+    fig, ax = plt.subplots(4, 8) 
     for i,ax_row in enumerate(ax):
         for j,axes in enumerate(ax_row):
-            current_map = feature_maps[:,:, i*8 + j] 
+            current_map = feature_maps3[:,:, i*8 + j] 
             print('current map is ', i*8+j)
             axes.set_yticks([])
             axes.set_xticks([])
             axes.imshow(current_map, cmap='gray')
-    plt.savefig(plot_name + "2")
+    plt.savefig(plot_name + pop1 + "2")
+    feature_maps4 = temporary_model.predict(real_regions[98:])
+    print(feature_maps4.shape)
+    feature_maps4 = tf.squeeze(feature_maps4)
+    fig, ax = plt.subplots(4, 8) 
+    for i,ax_row in enumerate(ax):
+        for j,axes in enumerate(ax_row):
+            current_map = feature_maps3[:,:, i*8 + j] 
+            print('current map is ', i*8+j)
+            axes.set_yticks([])
+            axes.set_xticks([])
+            axes.imshow(current_map, cmap='gray')
+    plt.savefig(plot_name + pop2 + "2")
 if __name__ == "__main__":
     main()
