@@ -341,8 +341,8 @@ class PG_GAN:
             trained_encoder_weights = trained_encoder.layers[i].get_weights()
             self.discriminator.layers[i].set_weights(trained_encoder_weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
-        #visualize_filters(trained_encoder, "pretraining")
-        feature_map_visualization(trained_encoder, self.VAE_model.iterator) 
+        visualize_filters(trained_encoder, "pretraining")
+        #feature_map_visualization(trained_encoder, self.VAE_model.iterator) 
         #try either 10 times or when acc is 90% for the discriminator with simulated data
         max_acc = 0 
         k = 0
@@ -449,15 +449,11 @@ def visualize_filters(model, name):
             filters = (filters - f_min) / (f_max - f_min)
             filters = tf.squeeze(filters) #get rid of the first dimension since it is 1. 
             filters = tf.transpose(filters) #put the number of filters first, the number of channels second. and the filter weights last.  
-            print(filters[0][0])
-            print(filters[0][1])
-            print(filters.shape)
-            for i in range(filters.shape[0]):
-                print(filters[i][0])
             fig, ax = plt.subplots(int(filters.shape[0]/8), 8) 
             for i,ax_row in enumerate(ax):
                 for j,axes in enumerate(ax_row):
-                    current_filter = filters[i*4+j][0] 
+                    print("filter being printed is number ", i*int(filters.shape[0]/8)+j)
+                    current_filter = filters[i*int(filters.shape[0]/8)+j][0] 
                     current_filter = tf.expand_dims(current_filter, axis=0)
                     axes.set_yticks([])
                     axes.set_xticks([])
@@ -465,14 +461,22 @@ def visualize_filters(model, name):
             plot_name = layer.name + name
             plt.savefig(plot_name)
 
-def feature_map_visualization(model, iterator): 
-    #temporary_model = tf.keras.Sequential() 
-    #temporary_model.add(Conv2D(32, (1, 5), activation='relu', input_shape = (198, 36, 2)))
-    #trained_encoder_weights = model.layers[0].get_weights()
-    #temporary_model.layers[0].set_weights(trained_encoder_weights)
-    temporary_model = Model(inputs=model.inputs , outputs=model.layers[0].output)
-    real_regions = iterator.real_batch(BATCH_SIZE, True)
+def feature_map_visualization(model, iterator, plot_name): 
+    temporary_model = tf.keras.Sequential() 
+    temporary_model.add(Conv2D(32, (1, 5), activation='relu', input_shape = (198, 36, 2)))
+    trained_encoder_weights = model.layers[0].get_weights()
+    temporary_model.layers[0].set_weights(trained_encoder_weights)
+    real_regions = iterator.real_batch(1, True)
     feature_maps = temporary_model.predict(real_regions)
     print(feature_maps.shape)
+    feature_maps = tf.squeeze(feature_maps)
+    fig, ax = plt.subplots(4, 49) 
+    for i,ax_row in enumerate(ax):
+        for j,axes in enumerate(ax_row):
+            current_map = feature_maps[i*4+j] 
+            axes.set_yticks([])
+            axes.set_xticks([])
+            axes.imshow(current_map, cmap='gray')
+    plt.savefig(plot_name)
 if __name__ == "__main__":
     main()
