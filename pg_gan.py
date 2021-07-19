@@ -464,7 +464,7 @@ def visualize_filters(model, name):
             plt.savefig(plot_name)
 
 def feature_map_visualization(model): 
-    temporary_model = Model(inputs=model.inputs, outputs=model.layers[1].output)
+    temporary_model = Model(inputs=model.inputs, outputs=model.layers[0].output)
     real_regions = model.iterator.real_batch(BATCH_SIZE, True)
     feature_maps = temporary_model.predict(real_regions)
     print(feature_maps.shape)
