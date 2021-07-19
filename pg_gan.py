@@ -470,10 +470,15 @@ def feature_map_visualization(model, iterator, plot_name):
     feature_maps = temporary_model.predict(real_regions)
     print(feature_maps.shape)
     feature_maps = tf.squeeze(feature_maps)
-    fig, ax = plt.subplots(4, 49) 
+    fig, ax = plt.subplots(4, 7) 
     for i,ax_row in enumerate(ax):
         for j,axes in enumerate(ax_row):
-            current_map = feature_maps[i*49+j] 
+            if i < 2:
+                current_map = feature_maps[i*7+j] 
+                print('current map is ', i*7+j)
+            else: 
+                current_map = feature_maps[96 + i*7+j]
+                print('current map is ', 96 + i*7+j)
             axes.set_yticks([])
             axes.set_xticks([])
             axes.imshow(current_map, cmap='gray')
