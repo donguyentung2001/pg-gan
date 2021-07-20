@@ -24,7 +24,7 @@ from VAE import *
 from tensorflow.keras.layers import Dense, Flatten, Conv1D, Conv2D, MaxPooling2D, AveragePooling1D, Dropout, Concatenate, Conv2DTranspose, Reshape
 from tensorflow.keras import Model
 # globals for simulated annealing
-NUM_ITER = 300
+NUM_ITER = 1
 BATCH_SIZE = 50
 NUM_BATCH = 100
 print("NUM_ITER", NUM_ITER)
@@ -471,6 +471,7 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     print("real region shape is ", real_regions.shape)
     print("the one we get has shape ", real_regions[:,:98,:,:].shape)
     feature_maps1 = temporary_model.predict(real_regions[:,:98,:,:])
+    print(real_regions[:,:98,:,:] == real_regions[:,98:,:,:])
     print(feature_maps1.shape)
     feature_maps1 = tf.squeeze(feature_maps1)
     fig, ax = plt.subplots(4, 8) 
