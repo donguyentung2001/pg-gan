@@ -24,7 +24,7 @@ from VAE import *
 from tensorflow.keras.layers import Dense, Flatten, Conv1D, Conv2D, MaxPooling2D, AveragePooling1D, Dropout, Concatenate, Conv2DTranspose, Reshape
 from tensorflow.keras import Model
 # globals for simulated annealing
-NUM_ITER = 1
+NUM_ITER = 300
 BATCH_SIZE = 50
 NUM_BATCH = 100
 print("NUM_ITER", NUM_ITER)
@@ -475,11 +475,11 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     print(tf.reduce_sum(tf.cast(bool_tensor, tf.float32)))
     print(feature_maps1.shape)
     feature_maps1 = tf.squeeze(feature_maps1)
-    fig, ax = plt.subplots(4, 8) 
+    fig, ax = plt.subplots(1, 2) 
     for i,ax_row in enumerate(ax):
         for j,axes in enumerate(ax_row):
-            current_map = feature_maps1[:,:, i*8 + j] 
-            print('current map is ', i*8+j)
+            current_map = feature_maps1[:,:, i*2 + j] 
+            print('current map is ', i*2+j)
             axes.set_yticks([])
             axes.set_xticks([])
             axes.imshow(current_map, cmap='gray')
@@ -487,11 +487,11 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps2 = temporary_model.predict(real_regions[:,98:,:,:])
     print(feature_maps2.shape)
     feature_maps2 = tf.squeeze(feature_maps2)
-    fig, ax = plt.subplots(4, 8) 
+    fig, ax = plt.subplots(1, 2) 
     for i,ax_row in enumerate(ax):
         for j,axes in enumerate(ax_row):
-            current_map = feature_maps1[:,:, i*8 + j] 
-            print('current map is ', i*8+j)
+            current_map = feature_maps1[:,:, i*2 + j] 
+            print('current map is ', i*2+j)
             axes.set_yticks([])
             axes.set_xticks([])
             axes.imshow(current_map, cmap='gray')
@@ -505,11 +505,11 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps3 = temporary_model2.predict(real_regions[:,:98,:,:])
     print(feature_maps3.shape)
     feature_maps3 = tf.squeeze(feature_maps3)
-    fig, ax = plt.subplots(8, 8) 
+    fig, ax = plt.subplots(1, 2) 
     for i,ax_row in enumerate(ax):
         for j,axes in enumerate(ax_row):
-            current_map = feature_maps3[:,:, i*8 + j] 
-            print('current map is ', i*8+j)
+            current_map = feature_maps3[:,:, i*2 + j] 
+            print('current map is ', i*2+j)
             axes.set_yticks([])
             axes.set_xticks([])
             axes.imshow(current_map, cmap='gray')
@@ -517,11 +517,11 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps4 = temporary_model2.predict(real_regions[:,98:,:,:])
     print(feature_maps4.shape)
     feature_maps4 = tf.squeeze(feature_maps4)
-    fig, ax = plt.subplots(8, 8) 
+    fig, ax = plt.subplots(1, 2) 
     for i,ax_row in enumerate(ax):
         for j,axes in enumerate(ax_row):
-            current_map = feature_maps4[:,:, i*8 + j] 
-            print('current map is ', i*8+j)
+            current_map = feature_maps4[:,:, i*2 + j] 
+            print('current map is ', i*2+j)
             axes.set_yticks([])
             axes.set_xticks([])
             axes.imshow(current_map, cmap='gray')
