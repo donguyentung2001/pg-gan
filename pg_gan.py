@@ -475,26 +475,20 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     print(tf.reduce_sum(tf.cast(bool_tensor, tf.float32)))
     print(feature_maps1.shape)
     feature_maps1 = tf.squeeze(feature_maps1)
-    fig, ax = plt.subplots(1, 2) 
-    for i,ax_row in enumerate(ax):
-        for j,axes in enumerate(ax_row):
-            current_map = feature_maps1[:,:, i*2 + j] 
-            print('current map is ', i*2+j)
-            axes.set_yticks([])
-            axes.set_xticks([])
-            axes.imshow(current_map, cmap='gray')
+    current_map = feature_maps1[:,:, 0] 
+    print('current map is ', 0)
+    plt.set_yticks([])
+    plt.set_xticks([])
+    plt.imshow(current_map, cmap='gray')
     plt.savefig(plot_name + pop1)
     feature_maps2 = temporary_model.predict(real_regions[:,98:,:,:])
     print(feature_maps2.shape)
     feature_maps2 = tf.squeeze(feature_maps2)
-    fig, ax = plt.subplots(1, 2) 
-    for i,ax_row in enumerate(ax):
-        for j,axes in enumerate(ax_row):
-            current_map = feature_maps1[:,:, i*2 + j] 
-            print('current map is ', i*2+j)
-            axes.set_yticks([])
-            axes.set_xticks([])
-            axes.imshow(current_map, cmap='gray')
+    current_map = feature_maps1[:,:, 0] 
+    print('current map is ', 0)
+    plt.set_yticks([])
+    plt.set_xticks([])
+    plt.imshow(current_map, cmap='gray')
     plt.savefig(plot_name + pop2)
     temporary_model2 = tf.keras.Sequential() 
     temporary_model2.add(Conv2D(32, (1, 5), activation='relu', input_shape = (98, 36, 2)))
@@ -505,26 +499,20 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps3 = temporary_model2.predict(real_regions[:,:98,:,:])
     print(feature_maps3.shape)
     feature_maps3 = tf.squeeze(feature_maps3)
-    fig, ax = plt.subplots(2, 2) 
-    for i,ax_row in enumerate(ax):
-        for j,axes in enumerate(ax_row):
-            current_map = feature_maps3[:,:, i*2 + j] 
-            print('current map is ', i*2+j)
-            axes.set_yticks([])
-            axes.set_xticks([])
-            axes.imshow(current_map, cmap='gray')
+    current_map = feature_maps3[:,:, 0] 
+    print('current map is ', 0)
+    plt.set_yticks([])
+    plt.set_xticks([])
+    plt.imshow(current_map, cmap='gray')
     plt.savefig(plot_name + pop1 + "2")
     feature_maps4 = temporary_model2.predict(real_regions[:,98:,:,:])
     print(feature_maps4.shape)
     feature_maps4 = tf.squeeze(feature_maps4)
-    fig, ax = plt.subplots(2, 2) 
-    for i,ax_row in enumerate(ax):
-        for j,axes in enumerate(ax_row):
-            current_map = feature_maps4[:,:, i*2 + j] 
-            print('current map is ', i*2+j)
-            axes.set_yticks([])
-            axes.set_xticks([])
-            axes.imshow(current_map, cmap='gray')
+    current_map = feature_maps4[:,:, 0] 
+    print('current map is ', 0)
+    plt.set_yticks([])
+    plt.set_xticks([])
+    plt.imshow(current_map, cmap='gray')
     plt.savefig(plot_name + pop2 + "2")
 if __name__ == "__main__":
     main()
