@@ -24,7 +24,7 @@ from VAE import *
 from tensorflow.keras.layers import Dense, Flatten, Conv1D, Conv2D, MaxPooling2D, AveragePooling1D, Dropout, Concatenate, Conv2DTranspose, Reshape
 from tensorflow.keras import Model
 # globals for simulated annealing
-NUM_ITER = 300
+NUM_ITER = 0
 BATCH_SIZE = 50
 NUM_BATCH = 100
 print("NUM_ITER", NUM_ITER)
@@ -505,7 +505,7 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps3 = temporary_model2.predict(real_regions[:,:98,:,:])
     print(feature_maps3.shape)
     feature_maps3 = tf.squeeze(feature_maps3)
-    fig, ax = plt.subplots(1, 2) 
+    fig, ax = plt.subplots(2, 2) 
     for i,ax_row in enumerate(ax):
         for j,axes in enumerate(ax_row):
             current_map = feature_maps3[:,:, i*2 + j] 
@@ -517,7 +517,7 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps4 = temporary_model2.predict(real_regions[:,98:,:,:])
     print(feature_maps4.shape)
     feature_maps4 = tf.squeeze(feature_maps4)
-    fig, ax = plt.subplots(1, 2) 
+    fig, ax = plt.subplots(2, 2) 
     for i,ax_row in enumerate(ax):
         for j,axes in enumerate(ax_row):
             current_map = feature_maps4[:,:, i*2 + j] 
