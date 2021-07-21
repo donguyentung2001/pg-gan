@@ -24,7 +24,7 @@ from VAE import *
 from tensorflow.keras.layers import Dense, Flatten, Conv1D, Conv2D, MaxPooling2D, AveragePooling1D, Dropout, Concatenate, Conv2DTranspose, Reshape
 from tensorflow.keras import Model
 # globals for simulated annealing
-NUM_ITER = 300
+NUM_ITER = 1
 BATCH_SIZE = 50
 NUM_BATCH = 100
 print("NUM_ITER", NUM_ITER)
@@ -250,7 +250,9 @@ def simulated_annealing(generator, discriminator, iterator, VAE_model, parameter
         loss_lst.append(loss_curr)
     
     #visualize_filters(discriminator, "after_training")
-    feature_map_visualization(discriminator, iterator, "feature_map_aftertraining", "CEU", "CHB") 
+    #feature_map_visualization(discriminator, iterator, "feature_map_aftertraining", "CEU", "CHB") 
+    print("after training, last weights are ")
+    print(discriminator.layers[8].get_weights())
     return posterior, loss_lst
 
 def temperature(i, num_iter):
@@ -341,9 +343,12 @@ class PG_GAN:
             print("changing discriminator's weights in layer ", i)
             trained_encoder_weights = trained_encoder.layers[i].get_weights()
             self.discriminator.layers[i].set_weights(trained_encoder_weights)
+            if i == 8: 
+                print("pretraining weights are: ")
+                print(trained_encoder_weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
         #visualize_filters(trained_encoder, "pretraining")
-        feature_map_visualization(trained_encoder, self.VAE_model.iterator, "feature_map_pretraining", "CEU", "CHB") 
+        #feature_map_visualization(trained_encoder, self.VAE_model.iterator, "feature_map_pretraining", "CEU", "CHB") 
         #try either 10 times or when acc is 90% for the discriminator with simulated data
         max_acc = 0 
         k = 0
