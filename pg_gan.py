@@ -477,8 +477,8 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps1 = tf.squeeze(feature_maps1)
     current_map = feature_maps1[:,:, 0] 
     print('current map is ', 0)
-    plt.set_yticks([])
-    plt.set_xticks([])
+    #plt.set_yticks([])
+    #plt.set_xticks([])
     plt.imshow(current_map, cmap='gray')
     plt.savefig(plot_name + pop1)
     feature_maps2 = temporary_model.predict(real_regions[:,98:,:,:])
@@ -486,8 +486,8 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps2 = tf.squeeze(feature_maps2)
     current_map = feature_maps1[:,:, 0] 
     print('current map is ', 0)
-    plt.set_yticks([])
-    plt.set_xticks([])
+    #plt.set_yticks([])
+    #plt.set_xticks([])
     plt.imshow(current_map, cmap='gray')
     plt.savefig(plot_name + pop2)
     temporary_model2 = tf.keras.Sequential() 
@@ -501,8 +501,8 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps3 = tf.squeeze(feature_maps3)
     current_map = feature_maps3[:,:, 0] 
     print('current map is ', 0)
-    plt.set_yticks([])
-    plt.set_xticks([])
+    #plt.set_yticks([])
+    #plt.set_xticks([])
     plt.imshow(current_map, cmap='gray')
     plt.savefig(plot_name + pop1 + "2")
     feature_maps4 = temporary_model2.predict(real_regions[:,98:,:,:])
@@ -510,8 +510,8 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps4 = tf.squeeze(feature_maps4)
     current_map = feature_maps4[:,:, 0] 
     print('current map is ', 0)
-    plt.set_yticks([])
-    plt.set_xticks([])
+    #plt.set_yticks([])
+    #plt.set_xticks([])
     plt.imshow(current_map, cmap='gray')
     plt.savefig(plot_name + pop2 + "2")
 if __name__ == "__main__":
