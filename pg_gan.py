@@ -24,7 +24,7 @@ from VAE import *
 from tensorflow.keras.layers import Dense, Flatten, Conv1D, Conv2D, MaxPooling2D, AveragePooling1D, Dropout, Concatenate, Conv2DTranspose, Reshape
 from tensorflow.keras import Model
 # globals for simulated annealing
-NUM_ITER = 300
+NUM_ITER = 1
 BATCH_SIZE = 50
 NUM_BATCH = 100
 print("NUM_ITER", NUM_ITER)
@@ -251,8 +251,8 @@ def simulated_annealing(generator, discriminator, iterator, VAE_model, parameter
     
     #visualize_filters(discriminator, "after_training")
     #feature_map_visualization(discriminator, iterator, "feature_map_aftertraining", "CEU", "CHB") 
-    print("after training, last weights are ")
-    print(discriminator.layers[8].get_weights())
+    for i in range(4): 
+        print(influential_nodes(self.discriminator, i)) 
     return posterior, loss_lst
 
 def temperature(i, num_iter):
@@ -347,6 +347,8 @@ class PG_GAN:
                 print("pretraining weights are: ")
                 print(trained_encoder_weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
+        for i in range(4): 
+            print(influential_nodes(self.discriminator, i)) 
         #visualize_filters(trained_encoder, "pretraining")
         #feature_map_visualization(trained_encoder, self.VAE_model.iterator, "feature_map_pretraining", "CEU", "CHB") 
         #try either 10 times or when acc is 90% for the discriminator with simulated data
@@ -519,5 +521,19 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     #plt.set_xticks([])
     plt.imshow(current_map, cmap='gray')
     plt.savefig(plot_name + pop2 + "2")
+
+def influential_nodes(model, k):
+    output = { 
+        8: (k, model.layers[8].get_weights()[1][k])  
+    }
+    previous_node_index = k 
+    for i in range(7,4, -1): 
+        print("Finding most influential nodes in layer ", i)
+        current_layer = model.layers[i].get_weights()[1]
+        max_weight_node = max(current_layer, key= lambda x: abs(x[previous_node_index]))
+        max_weight_index = current_layer.index(max_weight_node)
+        output[i] = (max_weight_index, max_weight_node)
+        print("appending node's index with weights", (max_weight_index, max_weight_node))
+    return output 
 if __name__ == "__main__":
     main()
