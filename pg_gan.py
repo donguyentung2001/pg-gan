@@ -252,7 +252,7 @@ def simulated_annealing(generator, discriminator, iterator, VAE_model, parameter
     #visualize_filters(discriminator, "after_training")
     #feature_map_visualization(discriminator, iterator, "feature_map_aftertraining", "CEU", "CHB") 
     for i in range(4): 
-        print(influential_nodes(self.discriminator, i)) 
+        print(influential_nodes(discriminator, i)) 
     return posterior, loss_lst
 
 def temperature(i, num_iter):
