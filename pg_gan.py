@@ -527,7 +527,7 @@ def influential_nodes(model, k):
         8: (k, model.layers[8].get_weights()[1][k])  
     }
     previous_node_index = k 
-    for i in range(8,4, -1): 
+    for i in range(8,5, -1): 
         print("Finding most influential nodes in layer ", i)
         print(model.layers[i])
         current_layer = model.layers[i].get_weights()[0] #all the weights going into the previous layers
@@ -538,6 +538,7 @@ def influential_nodes(model, k):
                 previous_node_index = max_weight_index 
         output[i] = (max_weight_index, max_weight_node)
         print("appending node's index with weights", (max_weight_index, max_weight_node))
+        print("current dict is ", output)
     return output 
 if __name__ == "__main__":
     main()
