@@ -535,7 +535,7 @@ def influential_nodes(model, k):
                 max_weight_index = j 
                 previous_node_index = max_weight_index 
         output[i] = (max_weight_index, max_weight_node)
-    print(model.layers[6].get_weights()[0])
+    print(len(model.layers[6].get_weights()[0]))
     
     return output 
 if __name__ == "__main__":
