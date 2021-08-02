@@ -529,13 +529,10 @@ def influential_nodes(model, k):
     previous_node_index = k 
     for i in range(8,4, -1): 
         print("Finding most influential nodes in layer ", i)
+        print(model.layers[i])
         current_layer = model.layers[i].get_weights()[0] #all the weights going into the previous layers
-        print(k)
-        print(current_layer)
         max_weight_node = max(current_layer, key= lambda x: abs(x[previous_node_index]))
-        print(max_weight_node)
         for i in range(len(current_layer)):
-            print(current_layer[i])
             if (current_layer[i] == max_weight_node).all(): 
                 max_weight_index = i  
                 previous_node_index = max_weight_index 
