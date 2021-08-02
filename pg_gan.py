@@ -251,8 +251,7 @@ def simulated_annealing(generator, discriminator, iterator, VAE_model, parameter
     
     #visualize_filters(discriminator, "after_training")
     #feature_map_visualization(discriminator, iterator, "feature_map_aftertraining", "CEU", "CHB") 
-    for i in range(4): 
-        print(influential_nodes(discriminator, i)) 
+    print(influential_nodes(discriminator, 0)) 
     return posterior, loss_lst
 
 def temperature(i, num_iter):
@@ -347,8 +346,7 @@ class PG_GAN:
                 print("pretraining weights are: ")
                 print(trained_encoder_weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
-        for i in range(4): 
-            print(influential_nodes(self.discriminator, i)) 
+        print(influential_nodes(self.discriminator, 0)) 
         #visualize_filters(trained_encoder, "pretraining")
         #feature_map_visualization(trained_encoder, self.VAE_model.iterator, "feature_map_pretraining", "CEU", "CHB") 
         #try either 10 times or when acc is 90% for the discriminator with simulated data
@@ -537,8 +535,7 @@ def influential_nodes(model, k):
                 max_weight_index = j 
                 previous_node_index = max_weight_index 
         output[i] = (max_weight_index, max_weight_node)
-        print("appending node's index " + str(i) + " with weights", (max_weight_index, max_weight_node))
-        print("new entry is ", output[i])
+    
     return output 
 if __name__ == "__main__":
     main()
