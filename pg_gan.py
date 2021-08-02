@@ -535,6 +535,7 @@ def influential_nodes(model, k):
         max_weight_node = max(current_layer, key= lambda x: abs(x[previous_node_index]))
         print(max_weight_node)
         for i in range(len(current_layer)):
+            print(current_layer[i])
             if current_layer[i] == max_weight_node: 
                 max_weight_index = i  
                 previous_node_index = max_weight_index 
