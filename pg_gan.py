@@ -249,8 +249,8 @@ def simulated_annealing(generator, discriminator, iterator, VAE_model, parameter
         posterior.append(s_current)
         loss_lst.append(loss_curr)
     
-    #visualize_filters(discriminator, "after_training")
-    #feature_map_visualization(discriminator, iterator, "feature_map_aftertraining", "CEU", "CHB") 
+    visualize_filters(discriminator, "after_training")
+    feature_map_visualization(discriminator, iterator, "feature_map_aftertraining", "CEU", "CHB") 
     print(influential_nodes(discriminator, 0)) 
     return posterior, loss_lst
 
@@ -347,8 +347,8 @@ class PG_GAN:
                 print(trained_encoder_weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
         print(influential_nodes(self.discriminator, 0)) 
-        #visualize_filters(trained_encoder, "pretraining")
-        #feature_map_visualization(trained_encoder, self.VAE_model.iterator, "feature_map_pretraining", "CEU", "CHB") 
+        visualize_filters(trained_encoder, "pretraining")
+        feature_map_visualization(trained_encoder, self.VAE_model.iterator, "feature_map_pretraining", "CEU", "CHB") 
         #try either 10 times or when acc is 90% for the discriminator with simulated data
         max_acc = 0 
         k = 0
@@ -535,7 +535,6 @@ def influential_nodes(model, k):
                 max_weight_index = j 
                 previous_node_index = max_weight_index 
         output[i] = (max_weight_index, max_weight_node)
-    print(len(model.layers[6].get_weights()[0]))
     
     return output 
 if __name__ == "__main__":
