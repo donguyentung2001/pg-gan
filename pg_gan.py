@@ -537,8 +537,8 @@ def influential_nodes(model, k):
                 max_weight_index = i  
                 previous_node_index = max_weight_index 
         output[i] = (max_weight_index, max_weight_node)
-        print("appending node's index with weights", (max_weight_index, max_weight_node))
-        print("current dict is ", output)
+        print("appending node's index " + str(i) + " with weights", (max_weight_index, max_weight_node))
+        print("new entry is ", output[i])
     return output 
 if __name__ == "__main__":
     main()
