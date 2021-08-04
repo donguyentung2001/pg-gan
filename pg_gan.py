@@ -468,33 +468,9 @@ def visualize_filters(model, name):
             plt.savefig(plot_name)
 
 def feature_map_visualization(model, iterator, plot_name, pop1, pop2, index): 
-    temporary_model = tf.keras.Sequential() 
-    temporary_model.add(Conv2D(32, (1, 5), activation='relu', input_shape = (98, 36, 2)))
-    trained_encoder_weights = model.layers[0].get_weights()
-    temporary_model.layers[0].set_weights(trained_encoder_weights)
     real_regions = iterator.real_batch(1, True)
     print("real region shape is ", real_regions.shape)
     print("the one we get has shape ", real_regions[:,:98,:,:].shape)
-    feature_maps1 = temporary_model.predict(real_regions[:,:98,:,:])
-    bool_tensor = tf.math.equal(real_regions[:,:98,:,:],real_regions[:,98:,:,:])
-    print(tf.reduce_sum(tf.cast(bool_tensor, tf.float32)))
-    print(feature_maps1.shape)
-    feature_maps1 = tf.squeeze(feature_maps1)
-    current_map = feature_maps1[:,:, index] 
-    print('current map is ', index)
-    #plt.set_yticks([])
-    #plt.set_xticks([])
-    plt.imshow(current_map, cmap='gray')
-    plt.savefig(plot_name + pop1)
-    feature_maps2 = temporary_model.predict(real_regions[:,98:,:,:])
-    print(feature_maps2.shape)
-    feature_maps2 = tf.squeeze(feature_maps2)
-    current_map = feature_maps2[:,:, index] 
-    print('current map is ', index)
-    #plt.set_yticks([])
-    #plt.set_xticks([])
-    plt.imshow(current_map, cmap='gray')
-    plt.savefig(plot_name + pop2)
     temporary_model2 = tf.keras.Sequential() 
     temporary_model2.add(Conv2D(32, (1, 5), activation='relu', input_shape = (98, 36, 2)))
     temporary_model2.add(Conv2D(64, (1, 5), activation='relu', input_shape = (98, 32, 32)))
@@ -509,7 +485,7 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2, index):
     #plt.set_yticks([])
     #plt.set_xticks([])
     plt.imshow(current_map, cmap='gray')
-    plt.savefig(plot_name + pop1 + "2")
+    plt.savefig(plot_name + pop1)
     feature_maps4 = temporary_model2.predict(real_regions[:,98:,:,:])
     print(feature_maps4.shape)
     feature_maps4 = tf.squeeze(feature_maps4)
@@ -518,7 +494,7 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2, index):
     #plt.set_yticks([])
     #plt.set_xticks([])
     plt.imshow(current_map, cmap='gray')
-    plt.savefig(plot_name + pop2 + "2")
+    plt.savefig(plot_name + pop2)
 
 def influential_nodes(model, k):
     output = { 
