@@ -348,7 +348,7 @@ class PG_GAN:
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
         output_nodes = influential_nodes(self.discriminator, 0)
         print(output_nodes) 
-        feature_map_visualization(self.discriminator, iterator, "feature_map_pretraining", "CEU", "CHB", int(output_nodes[6][0]//12)) 
+        feature_map_visualization(self.discriminator, self.iterator, "feature_map_pretraining", "CEU", "CHB", int(output_nodes[6][0]//12)) 
         #try either 10 times or when acc is 90% for the discriminator with simulated data
         max_acc = 0 
         k = 0
