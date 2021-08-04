@@ -24,7 +24,7 @@ from VAE import *
 from tensorflow.keras.layers import Dense, Flatten, Conv1D, Conv2D, MaxPooling2D, AveragePooling1D, Dropout, Concatenate, Conv2DTranspose, Reshape
 from tensorflow.keras import Model
 # globals for simulated annealing
-NUM_ITER = 300
+NUM_ITER = 1
 BATCH_SIZE = 50
 NUM_BATCH = 100
 print("NUM_ITER", NUM_ITER)
@@ -248,10 +248,10 @@ def simulated_annealing(generator, discriminator, iterator, VAE_model, parameter
         print(T, p_accept, rand, s_current, loss_curr)
         posterior.append(s_current)
         loss_lst.append(loss_curr)
-    
-    visualize_filters(discriminator, "after_training")
-    feature_map_visualization(discriminator, iterator, "feature_map_aftertraining", "CEU", "CHB") 
-    print(influential_nodes(discriminator, 0)) 
+
+    output_nodes = influential_nodes(discriminator, 0)
+    print(output_nodes) 
+    feature_map_visualization(discriminator, iterator, "feature_map_aftertraining", "CEU", "CHB", int(output_nodes[6][0]//12)) 
     return posterior, loss_lst
 
 def temperature(i, num_iter):
@@ -346,9 +346,9 @@ class PG_GAN:
                 print("pretraining weights are: ")
                 print(trained_encoder_weights)
         print("finish pretraining with VAE. The discriminator layers should now be updated. \n Now we find the best parameters for the discriminators. ")
-        print(influential_nodes(self.discriminator, 0)) 
-        visualize_filters(trained_encoder, "pretraining")
-        feature_map_visualization(trained_encoder, self.VAE_model.iterator, "feature_map_pretraining", "CEU", "CHB") 
+        output_nodes = influential_nodes(discriminator, 0)
+        print(output_nodes) 
+        feature_map_visualization(discriminator, iterator, "feature_map_pretraining", "CEU", "CHB", int(output_nodes[6][0]//12)) 
         #try either 10 times or when acc is 90% for the discriminator with simulated data
         max_acc = 0 
         k = 0
@@ -467,7 +467,7 @@ def visualize_filters(model, name):
             plot_name = layer.name + name
             plt.savefig(plot_name)
 
-def feature_map_visualization(model, iterator, plot_name, pop1, pop2): 
+def feature_map_visualization(model, iterator, plot_name, pop1, pop2, index): 
     temporary_model = tf.keras.Sequential() 
     temporary_model.add(Conv2D(32, (1, 5), activation='relu', input_shape = (98, 36, 2)))
     trained_encoder_weights = model.layers[0].get_weights()
@@ -480,8 +480,8 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     print(tf.reduce_sum(tf.cast(bool_tensor, tf.float32)))
     print(feature_maps1.shape)
     feature_maps1 = tf.squeeze(feature_maps1)
-    current_map = feature_maps1[:,:, 0] 
-    print('current map is ', 0)
+    current_map = feature_maps1[:,:, index] 
+    print('current map is ', index)
     #plt.set_yticks([])
     #plt.set_xticks([])
     plt.imshow(current_map, cmap='gray')
@@ -489,8 +489,8 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps2 = temporary_model.predict(real_regions[:,98:,:,:])
     print(feature_maps2.shape)
     feature_maps2 = tf.squeeze(feature_maps2)
-    current_map = feature_maps1[:,:, 0] 
-    print('current map is ', 0)
+    current_map = feature_maps2[:,:, index] 
+    print('current map is ', index)
     #plt.set_yticks([])
     #plt.set_xticks([])
     plt.imshow(current_map, cmap='gray')
@@ -504,8 +504,8 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps3 = temporary_model2.predict(real_regions[:,:98,:,:])
     print(feature_maps3.shape)
     feature_maps3 = tf.squeeze(feature_maps3)
-    current_map = feature_maps3[:,:, 0] 
-    print('current map is ', 0)
+    current_map = feature_maps3[:,:, index] 
+    print('current map is ', index)
     #plt.set_yticks([])
     #plt.set_xticks([])
     plt.imshow(current_map, cmap='gray')
@@ -513,8 +513,8 @@ def feature_map_visualization(model, iterator, plot_name, pop1, pop2):
     feature_maps4 = temporary_model2.predict(real_regions[:,98:,:,:])
     print(feature_maps4.shape)
     feature_maps4 = tf.squeeze(feature_maps4)
-    current_map = feature_maps4[:,:, 0] 
-    print('current map is ', 0)
+    current_map = feature_maps4[:,:, index] 
+    print('current map is ', index)
     #plt.set_yticks([])
     #plt.set_xticks([])
     plt.imshow(current_map, cmap='gray')
